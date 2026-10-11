@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Yuvora spark mark">
+  <path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#3284FF"/>
+  <circle cx="49" cy="15" r="7.5" fill="#FFCA36" stroke="#FAF9F5" stroke-width="3"/>
+</svg>

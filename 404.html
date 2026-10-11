@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lost? — Yuvora</title>
+  <meta name="description" content="That page doesn't exist — but your people do. Head back to Yuvora." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <link rel="stylesheet" href="/src/css/home.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-bar">
+      <a class="brand" href="/" aria-label="Yuvora home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#3284FF"/><circle cx="49" cy="15" r="7.5" fill="#FFCA36" stroke="#FAF9F5" stroke-width="3"/></svg>
+        <span>yuvora</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/hubs/">Explore</a></li>
+          <li><a href="/events/">Events</a></li>
+          <li><a href="/team/">Community</a></li>
+          <li><a href="/collaborate/">Collaborate</a></li>
+        </ul>
+      </nav>
+      <span class="nav-cta"><a class="btn btn-primary btn-sm" href="/collaborate/#join">Join Yuvora</a></span>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="main">
+    <div class="container" style="text-align:center;padding-block:clamp(4rem,10vw,7rem)">
+      <svg width="88" height="88" viewBox="0 0 48 48" style="margin:0 auto 1.5rem" aria-hidden="true"><path d="M24 3c1.8 13 6.5 17.7 19.5 19.5-13 1.8-17.7 6.5-19.5 19.5C22.2 29 17.5 24.3 4.5 22.5 17.5 20.7 22.2 16 24 3z" fill="#FFCA36" stroke="#171717" stroke-width="2.5"/><circle cx="37" cy="11" r="5" fill="#3284FF" stroke="#171717" stroke-width="2.5"/></svg>
+      <p class="hand-note">oops — wrong turn!</p>
+      <h1 class="display" style="font-size:clamp(3rem,8vw,5.5rem)">4-oh-4.</h1>
+      <p class="lead" style="margin:1rem auto 0">This page doesn&rsquo;t exist — but your people do. Let&rsquo;s get you back to them.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn btn-primary" href="/">Back home <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="/hubs/">Explore the hubs</a>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer" style="margin-top:0">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none">
+        <span>© <span data-year>2026</span> Yuvora · yuvora.org · Independent student community.</span>
+        <span><a href="/" style="color:var(--sun)">yuvora.org</a></span>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="/src/js/site.js"></script>
+</body>
+</html>

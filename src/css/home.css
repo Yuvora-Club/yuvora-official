@@ -1,0 +1,346 @@
+/* ============================================================
+   YUVORA — home.css (v3 "SIGNAL IN THE DARK")
+   Homepage only: constellation hero, hub chapters, dark
+   screening room, contact-sheet wall, closing frame.
+   ============================================================ */
+
+/* ============ SCENE 01 — THE OPENING ============ */
+.hero-dark {
+  position: relative;
+  min-height: max(100svh, 680px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: clip;
+  background: var(--ink-deep);
+  color: var(--paper-strong);
+  padding-top: clamp(4rem, 8vh, 6rem);
+}
+.hero-dark .sky {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 72% 38%, rgba(50, 132, 255, 0.13) 0%, transparent 62%),
+    radial-gradient(ellipse 120% 90% at 50% 110%, rgba(0, 0, 0, 0.55) 0%, transparent 55%),
+    radial-gradient(rgba(250, 249, 245, 0.5) 1px, transparent 1px),
+    radial-gradient(rgba(250, 249, 245, 0.28) 1px, transparent 1px);
+  background-size: auto, auto, 34px 34px, 34px 34px;
+  background-position: 0 0, 0 0, 0 0, 17px 17px;
+}
+/* Viewfinder corner ticks */
+.tick { position: absolute; width: 26px; height: 26px; border: 0 solid var(--paper-line); z-index: 2; pointer-events: none; }
+.tick.tl { top: 84px; left: 22px; border-top-width: 2px; border-left-width: 2px; }
+.tick.tr { top: 84px; right: 22px; border-top-width: 2px; border-right-width: 2px; }
+.tick.bl { bottom: 22px; left: 22px; border-bottom-width: 2px; border-left-width: 2px; }
+.tick.br { bottom: 22px; right: 22px; border-bottom-width: 2px; border-right-width: 2px; }
+
+.hero-inner { position: relative; z-index: 2; padding-bottom: clamp(1.5rem, 4vh, 3rem); }
+.slate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--night-soft);
+  margin-bottom: 1.4rem;
+}
+.slate::before { content: ""; width: 2.2rem; height: 2px; background: var(--sun); }
+.hero-dark h1 { font-size: clamp(3.4rem, 10.5vw, 9.5rem); max-width: 10ch; }
+.hero-dark h1 .hl-sun { color: var(--sun); }
+.hero-dark h1 .hl-ghost {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--paper-strong);
+}
+@supports not (-webkit-text-stroke: 1px black) {
+  .hero-dark h1 .hl-ghost { color: var(--paper-strong); }
+}
+.hero-sub {
+  margin-top: 1.5rem;
+  max-width: 50ch;
+  color: var(--night-soft);
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+}
+.hero-dark .hero-actions { margin-top: 2.1rem; }
+
+/* Constellation field — floats ABOVE the type layer so the hub
+   stars stay clickable everywhere; the field itself is
+   click-transparent. */
+.constellation { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.orbits { position: absolute; top: 0; right: 0; width: 58%; height: 100%; overflow: visible; }
+.orbit-ring { fill: none; stroke: var(--paper-line); stroke-width: 1.5; stroke-dasharray: 3 10; transform-origin: center; transform-box: fill-box; }
+.orbit-ring.r1 { animation: orbit-spin 140s linear infinite; }
+.orbit-ring.r2 { animation: orbit-spin 100s linear infinite reverse; }
+@keyframes orbit-spin { to { transform: rotate(360deg); } }
+.node {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  pointer-events: auto;
+  padding: 0.6rem;
+}
+.node.flip { flex-direction: row-reverse; text-align: right; }
+.node-star { position: relative; flex: none; width: 46px; height: 46px; display: inline-flex; align-items: center; justify-content: center; }
+.node-star svg { width: 20px; height: 20px; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.node-star::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--c);
+  border-radius: 50%;
+  opacity: 0.75;
+  animation: halo 3.2s ease-in-out infinite;
+}
+@keyframes halo { 0%, 100% { transform: scale(0.82); opacity: 0.85; } 50% { transform: scale(1); opacity: 0.35; } }
+.node:hover .node-star svg, .node:focus-visible .node-star svg { transform: scale(1.5) rotate(-12deg); }
+.node-label { font-family: var(--font-display); font-weight: 800; font-size: 1.02rem; letter-spacing: -0.01em; color: var(--paper-strong); line-height: 1.15; }
+.node-label small { display: block; font-family: var(--font-body); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.06em; color: var(--night-faint); margin-top: 0.15rem; }
+.node .float-a { animation: node-drift 7s ease-in-out infinite; display: inline-flex; align-items: center; gap: 0.7rem; }
+.node .float-b { animation: node-drift 5.6s ease-in-out infinite reverse; display: inline-flex; align-items: center; gap: 0.7rem; }
+.node.flip .float-a, .node.flip .float-b { flex-direction: row-reverse; text-align: right; }
+@keyframes node-drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+.node-center {
+  position: absolute;
+  left: 74%; top: 44%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.node-center svg { width: 64px; height: 64px; animation: orbit-spin 46s linear infinite; }
+/* Node placement (desktop) — kept to the right two-thirds so the
+   headline owns the left. */
+.node-tech { left: 55%; top: 13%; --c: var(--blue); }
+.node-sport { right: 3%; top: 11%; --c: var(--mint); }
+.node-esports { left: 51%; top: 63%; --c: var(--violet); }
+.node-future { right: 5%; top: 61%; --c: var(--orange); }
+
+.hero-meta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--paper-line);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--night-faint);
+}
+.hero-meta .scroll-cue { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--night-soft); }
+.hero-meta .scroll-cue i {
+  display: inline-block;
+  width: 2px; height: 26px;
+  background: var(--sun);
+  animation: cue-drop 2s ease-in-out infinite;
+  transform-origin: top;
+}
+@keyframes cue-drop { 0%, 100% { transform: scaleY(0.4); opacity: 0.5; } 50% { transform: scaleY(1); opacity: 1; } }
+
+@media (max-width: 900px) {
+  .hero-dark { min-height: 0; justify-content: flex-start; }
+  .orbits, .node-center, .tick { display: none; }
+  .constellation {
+    position: static;
+    order: 5;
+    width: min(var(--container), 100% - 2rem);
+    margin-inline: auto;
+    padding: 0 0 1.5rem;
+  }
+  .hero-dark .container.hero-inner { display: flex; flex-direction: column; }
+  .hero-dark .hero-sub { order: 2; }
+  .hero-dark .hero-actions { order: 3; }
+  .hero-dark .container.hero-meta { order: 6; }
+  .node, .node-tech, .node-sport, .node-esports, .node-future {
+    position: static;
+    padding: 0.7rem 0.2rem;
+    border-top: 1px solid var(--paper-line);
+  }
+  .node .float-a, .node .float-b, .node.flip .float-a, .node.flip .float-b { flex-direction: row; text-align: left; }
+  .node-star { width: 38px; height: 38px; }
+  .node-label { font-size: 0.95rem; }
+  .hero-meta .meta-mid { display: none; }
+}
+
+/* ============ SCENE 02 — THE IDEA ============ */
+.idea-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4.4vw, 3.6rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+}
+.idea-text .mk { padding: 0 0.1em; border-radius: var(--radius); white-space: nowrap; }
+.idea-text .mk-sun { background: var(--sun); }
+.idea-text .mk-blue { background: var(--blue); color: #fff; }
+.idea-text .mk-mint { background: var(--mint); }
+.idea-text .mk-violet { background: var(--violet); color: #fff; }
+.idea-side { display: flex; flex-direction: column; gap: 1.1rem; align-items: flex-start; }
+@media (min-width: 861px) { .idea-side { position: sticky; top: 6rem; } }
+.idea-grid { display: grid; grid-template-columns: 0.85fr 2.15fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: start; }
+@media (max-width: 860px) { .idea-grid { grid-template-columns: 1fr; } }
+
+/* ============ SCENE 03 — HUB CHAPTERS ============ */
+.chapters { border-top: 1px solid var(--line-strong); }
+.chapter {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.6rem clamp(1.2rem, 3vw, 2.6rem);
+  align-items: center;
+  padding: clamp(1.8rem, 4vw, 3rem) 0.5rem;
+  border-bottom: 1px solid var(--line-strong);
+  text-decoration: none;
+  overflow: clip;
+  isolation: isolate;
+}
+.chapter::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--hub-tint);
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.chapter:hover::before, .chapter:focus-visible::before { transform: scaleY(1); }
+.chapter::after {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+  background: var(--hub);
+  transform: scaleY(0); transform-origin: top;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.chapter:hover::after, .chapter:focus-visible::after { transform: scaleY(1); }
+.ch-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.4rem, 7vw, 6.4rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink-faint);
+  transition: color 0.3s ease, -webkit-text-stroke-color 0.3s ease;
+  padding-left: 0.6rem;
+}
+.chapter:hover .ch-num { color: var(--hub); -webkit-text-stroke-color: var(--hub); }
+.ch-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 0.95;
+  transition: transform 0.28s ease;
+}
+.chapter:hover .ch-name { transform: translateX(12px); }
+.ch-name small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hub);
+  margin-top: 0.5rem;
+}
+.ch-desc { color: var(--ink-soft); font-size: 1rem; max-width: 36ch; margin-top: 0.7rem; }
+.ch-enter { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.9rem; font-family: var(--font-display); font-weight: 800; font-size: 1rem; }
+.ch-enter .arr { transition: transform 0.2s ease; }
+.chapter:hover .ch-enter .arr { transform: translateX(5px); }
+.ch-glyph { width: clamp(4.5rem, 8vw, 7rem); height: auto; transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.chapter:hover .ch-glyph { transform: rotate(-8deg) scale(1.06); }
+@media (max-width: 860px) {
+  .chapter { grid-template-columns: 1fr auto; }
+  .ch-num { display: none; }
+  .ch-glyph { width: 3.6rem; }
+}
+
+/* ============ SCENE 04 — SCREENING ROOM (dark events) ============ */
+.screen-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem 2.5rem; flex-wrap: wrap; margin-bottom: 2.6rem; }
+.screen-head .season-no { font-family: var(--font-display); font-weight: 800; font-size: clamp(3rem, 8vw, 6.5rem); letter-spacing: -0.04em; line-height: 0.9; }
+.screen-head .season-no em { font-style: normal; color: var(--sun); }
+.status-legend { display: flex; gap: 1.6rem; flex-wrap: wrap; align-items: center; margin-top: 2.4rem; font-size: 0.9rem; font-weight: 600; color: var(--night-soft); }
+.status-legend .u-link { margin-left: auto; color: var(--paper-strong); }
+
+/* ============ SCENE 05 — CONTACT SHEET (community wall) ============ */
+.filmstrip {
+  background: var(--ink-deep);
+  color: var(--paper-strong);
+  padding: clamp(1.2rem, 3vw, 2rem) clamp(1rem, 3vw, 2.4rem);
+  position: relative;
+}
+.filmstrip::before, .filmstrip::after {
+  content: "";
+  display: block;
+  height: 22px;
+  background-image: repeating-linear-gradient(90deg, var(--paper-strong) 0 14px, transparent 14px 30px);
+  opacity: 0.85;
+}
+.filmstrip::before { margin-bottom: 1.4rem; }
+.filmstrip::after { margin-top: 1.4rem; }
+.frames { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.frame { border: 1px solid var(--paper-line); background: #000; transition: transform 0.25s ease, border-color 0.25s ease; }
+.frame:hover { transform: translateY(-5px); border-color: var(--sun); }
+.frame .frame-img { aspect-ratio: 4 / 3; position: relative; overflow: hidden; }
+.frame figcaption {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  border-top: 1px solid var(--paper-line);
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--night-soft);
+}
+.frame .frame-no { font-family: var(--font-display); font-weight: 800; color: var(--sun); letter-spacing: 0; }
+@media (max-width: 860px) { .frames { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .frames { grid-template-columns: 1fr; } }
+
+/* ============ SCENE 06/07 — section headers ============ */
+.section-head { margin-bottom: clamp(2.2rem, 5vw, 3.6rem); max-width: 80rem; }
+.section-head h2 { max-width: 16ch; }
+.section-head .head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem 2.5rem; flex-wrap: wrap; }
+.section-head p.standfirst { color: var(--ink-soft); max-width: 52ch; margin-top: 1rem; font-size: 1.08rem; }
+
+/* ============ Workshop stages — transmission rows ============ */
+.stage-rows { border-top: 1px solid var(--line-strong); }
+.stage-row { display: grid; grid-template-columns: auto 1fr; gap: 0.3rem 1.4rem; padding: 1.3rem 0.25rem; border-bottom: 1px solid var(--line); align-items: baseline; }
+.stage-row .stage-name { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 0.8rem; }
+.stage-row p { grid-column: 2; color: var(--ink-soft); max-width: 52ch; }
+
+/* ============ Team roles — sharp chips ============ */
+.role-chips { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.6rem; }
+.role-chip {
+  font-family: var(--font-display); font-weight: 800; font-size: 0.95rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 0.55rem 1rem;
+  background: var(--card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.role-chip:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-hard-sm); }
+.team-strip { display: flex; align-items: center; gap: 1.2rem; margin-top: 1.8rem; flex-wrap: wrap; }
+
+/* ============ SCENE 08 — collaborate giant ============ */
+.collab-giant { font-size: clamp(2.6rem, 7vw, 6rem); line-height: 1; max-width: 13ch; letter-spacing: -0.03em; font-weight: 800; font-family: var(--font-display); }
+.collab-giant a { text-decoration: none; background-image: linear-gradient(var(--sun), var(--sun)); background-size: 100% 0.12em; background-repeat: no-repeat; background-position: 0 94%; transition: background-size 0.25s ease; }
+.collab-giant a:hover { background-size: 100% 0.3em; }
+.collab-ways { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
+@media (max-width: 700px) { .collab-ways { grid-template-columns: 1fr; } }
+
+/* ============ FINAL SCENE — closing frame ============ */
+.finale {
+  position: relative;
+  overflow: clip;
+  background: var(--ink-deep);
+  color: var(--paper-strong);
+  padding-block: clamp(5rem, 11vw, 9rem);
+  text-align: center;
+}
+.finale .finale-mark { width: 58px; height: 58px; margin: 0 auto 1.6rem; animation: orbit-spin 40s linear infinite; }
+.finale h2 { font-size: clamp(2.8rem, 8.5vw, 7rem); max-width: 12ch; margin: 0 auto; }
+.finale h2 .hl { color: var(--sun); }
+.finale p { color: var(--night-soft); max-width: 54ch; margin: 1.3rem auto 0; font-size: 1.08rem; }
+.finale .hero-actions { justify-content: center; margin-top: 2.2rem; }
+.finale .finale-hubs { display: flex; gap: 1.4rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--night-faint); }
+.finale .finale-hubs a { text-decoration: none; transition: color 0.18s ease; }
+.finale .finale-hubs a:hover { color: var(--sun); }

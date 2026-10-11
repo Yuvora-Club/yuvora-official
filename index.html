@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yuvora — Find your people. Make your thing.</title>
+  <meta name="description" content="Yuvora is an independent student community for people who love exploring, creating, competing and bringing ideas to life. Different interests. Same energy." />
+  <link rel="canonical" href="https://yuvora.org/" />
+  <meta name="theme-color" content="#14120F" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Yuvora" />
+  <meta property="og:title" content="Yuvora — Find your people. Make your thing." />
+  <meta property="og:description" content="An independent, student-led community. Tech, sports, gaming and whatever comes next — your interests belong here." />
+  <meta property="og:url" content="https://yuvora.org/" />
+  <meta property="og:image" content="https://yuvora.org/logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/css/base.css" />
+  <link rel="stylesheet" href="/src/css/components.css" />
+  <link rel="stylesheet" href="/src/css/home.css" />
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header class="site-header transparent" id="siteHeader">
+    <div class="container nav-bar">
+      <a class="brand" href="/" aria-label="Yuvora home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#3284FF"/><circle cx="49" cy="15" r="7.5" fill="#FFCA36" stroke="#FAF9F5" stroke-width="3"/></svg>
+        <span>yuvora</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/hubs/">Explore</a></li>
+          <li><a href="/events/">Events</a></li>
+          <li><a href="/team/">Community</a></li>
+          <li><a href="/collaborate/">Collaborate</a></li>
+        </ul>
+      </nav>
+      <span class="nav-cta"><a class="btn btn-sun btn-sm" href="/collaborate/#join">Join Yuvora</a></span>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ SCENE 01 — THE OPENING ============ -->
+    <section class="hero-dark grain" aria-labelledby="heroTitle">
+      <div class="sky" aria-hidden="true"></div>
+      <span class="tick tl" aria-hidden="true"></span>
+      <span class="tick tr" aria-hidden="true"></span>
+      <span class="tick bl" aria-hidden="true"></span>
+      <span class="tick br" aria-hidden="true"></span>
+
+      <div class="constellation" id="artStage" aria-hidden="false">
+        <svg class="orbits" viewBox="0 0 600 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <ellipse class="orbit-ring r1" cx="330" cy="330" rx="270" ry="250" />
+          <ellipse class="orbit-ring r2" cx="330" cy="330" rx="185" ry="300" />
+          <circle cx="330" cy="330" r="3" fill="#FFCA36" />
+        </svg>
+        <span class="node-center" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#FAF9F5"/><circle cx="49" cy="15" r="7.5" fill="#FFCA36"/></svg>
+        </span>
+        <a class="node node-tech" href="/hubs/tech/" data-depth="0.7" aria-label="Tech Hub — Build. Code. Create.">
+          <span class="float-a">
+            <span class="node-star"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#3284FF"/></svg></span>
+            <span class="node-label">Tech Hub<small>Build. Code. Create.</small></span>
+          </span>
+        </a>
+        <a class="node node-sport flip" href="/hubs/sporting/" data-depth="0.9" aria-label="Sporting Hub — Play. Compete. Grow.">
+          <span class="float-b">
+            <span class="node-star"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#26C878"/></svg></span>
+            <span class="node-label">Sporting Hub<small>Play. Compete. Grow.</small></span>
+          </span>
+        </a>
+        <a class="node node-esports" href="/hubs/esports/" data-depth="0.6" aria-label="Esports and Gaming — Game. Connect. Compete.">
+          <span class="float-b">
+            <span class="node-star"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#8A55EF"/></svg></span>
+            <span class="node-label">Esports &amp; Gaming<small>Game. Connect. Compete.</small></span>
+          </span>
+        </a>
+        <a class="node node-future flip" href="/hubs/future/" data-depth="0.8" aria-label="Future Hubs — More interests. More possibilities.">
+          <span class="float-a">
+            <span class="node-star"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#FF9148"/></svg></span>
+            <span class="node-label">Future Hubs<small>More interests. More possibilities.</small></span>
+          </span>
+        </a>
+      </div>
+
+      <div class="container hero-inner">
+        <p class="slate">Scene 01 · Independent — student-led</p>
+        <h1 id="heroTitle">Find your <span class="hl-sun">people.</span><br />Make your <span class="hl-ghost">thing.</span></h1>
+        <p class="hero-sub">Yuvora is an independent student community for people who love exploring, creating, competing and bringing ideas to life.</p>
+        <div class="hero-actions">
+          <a class="btn btn-sun" href="/hubs/">Explore the hubs <span aria-hidden="true">→</span></a>
+          <a class="btn btn-paper" href="/collaborate/#join">Get involved</a>
+        </div>
+      </div>
+
+      <div class="container hero-meta">
+        <span>tech · sport · esports · +more</span>
+        <span class="meta-mid">Different interests. Same energy.</span>
+        <span class="scroll-cue"><i aria-hidden="true"></i>scroll</span>
+      </div>
+    </section>
+
+    <!-- Film leader -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Find your people <i class="tick-star">✦</i> Make your thing <i class="tick-star">✦</i> Tech <i class="tick-star">✦</i> Sport <i class="tick-star">✦</i> Esports <i class="tick-star">✦</i> Create <i class="tick-star">✦</i> Compete <i class="tick-star">✦</i>&nbsp;</span>
+        <span>Find your people <i class="tick-star">✦</i> Make your thing <i class="tick-star">✦</i> Tech <i class="tick-star">✦</i> Sport <i class="tick-star">✦</i> Esports <i class="tick-star">✦</i> Create <i class="tick-star">✦</i> Compete <i class="tick-star">✦</i>&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- ============ Recognition — quiet, honest ============ -->
+    <div class="recognition" aria-label="Partnerships and recognition">
+      <div class="container">
+        <span class="rec-label">Independent &amp; student-led</span>
+        <div class="rec-slots">
+          <span class="rec-slot"><strong>Hack Club</strong> — shown here once an affiliation is confirmed.</span>
+          <span class="rec-slot"><strong>Schools &amp; sponsors</strong> — verified partners only, never filler logos.</span>
+        </div>
+        <a class="rec-cta u-link" href="/collaborate/" style="font-size:0.95rem">Become a partner <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <!-- ============ SCENE 02 — THE IDEA ============ -->
+    <section class="section" aria-labelledby="ideaTitle">
+      <div class="container">
+        <p class="scene reveal"><span class="no">02</span> The idea</p>
+        <div class="idea-grid">
+          <div class="idea-side reveal">
+            <span class="hand-note">not a club.<br />a crew →</span>
+            <a class="u-link" href="/team/">Meet the community <span class="arr">→</span></a>
+          </div>
+          <p class="idea-text reveal" id="ideaTitle" data-delay="1">Yuvora is where <span class="mk mk-sun">builders</span>, <span class="mk mk-mint">players</span>, <span class="mk mk-violet">gamers</span> and <span class="mk mk-blue">dreamers</span> stop doing their thing alone — and start doing it <em>together.</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCENE 03 — THE HUBS ============ -->
+    <section class="section" id="hubs" aria-labelledby="hubsTitle" style="padding-top:0">
+      <div class="container">
+        <p class="scene reveal"><span class="no">03</span> The hubs — four points of light</p>
+        <div class="reveal" style="margin-bottom:clamp(1.6rem,3.5vw,2.6rem)">
+          <h2 class="h2" id="hubsTitle" style="max-width:14ch">Four doors.<br />One house.</h2>
+          <p class="lead" style="margin-top:1rem">Interest-based homes with their own colour, vibe and crew. Join one, join three — regulars and first-timers get the same welcome.</p>
+        </div>
+        <nav class="chapters reveal" aria-label="Hubs" data-delay="1">
+          <a class="chapter" href="/hubs/tech/" style="--hub:#3284FF;--hub-tint:#E3EDFF">
+            <span class="ch-num" aria-hidden="true">01</span>
+            <span>
+              <span class="ch-name">Tech Hub <small>Build · Code · Create</small></span>
+              <span class="ch-desc">Coding, robotics, design and tinkering — from first-timers to seasoned builders.</span>
+              <span class="ch-enter">Enter the hub <span class="arr">→</span></span>
+            </span>
+            <svg class="ch-glyph" viewBox="0 0 64 64" fill="none" stroke="#3284FF" stroke-width="3" aria-hidden="true"><rect x="14" y="14" width="36" height="36"/><path d="M32 14V4M32 60v-10M14 32H4M60 32H50" stroke="#171717"/><circle cx="32" cy="32" r="5" fill="#3284FF" stroke="#171717"/><circle cx="32" cy="4" r="2.5" fill="#171717" stroke="none"/><circle cx="32" cy="60" r="2.5" fill="#171717" stroke="none"/><circle cx="4" cy="32" r="2.5" fill="#171717" stroke="none"/><circle cx="60" cy="32" r="2.5" fill="#171717" stroke="none"/></svg>
+          </a>
+          <a class="chapter" href="/hubs/sporting/" style="--hub:#26C878;--hub-tint:#DFF5E9">
+            <span class="ch-num" aria-hidden="true">02</span>
+            <span>
+              <span class="ch-name">Sporting Hub <small>Play · Compete · Grow</small></span>
+              <span class="ch-desc">Casual play, friendly matches and training together. All levels, genuinely.</span>
+              <span class="ch-enter">Enter the hub <span class="arr">→</span></span>
+            </span>
+            <svg class="ch-glyph" viewBox="0 0 64 64" fill="none" stroke="#26C878" stroke-width="3" aria-hidden="true"><circle cx="32" cy="32" r="13"/><ellipse cx="32" cy="32" rx="26" ry="11" transform="rotate(-24 32 32)" stroke="#171717"/><circle cx="53" cy="20" r="3" fill="#26C878" stroke="#171717"/></svg>
+          </a>
+          <a class="chapter" href="/hubs/esports/" style="--hub:#8A55EF;--hub-tint:#EAE2FD">
+            <span class="ch-num" aria-hidden="true">03</span>
+            <span>
+              <span class="ch-name">Esports &amp; Gaming <small>Game · Connect · Compete</small></span>
+              <span class="ch-desc">Game nights and community tournaments — competitive, minus the toxicity.</span>
+              <span class="ch-enter">Enter the hub <span class="arr">→</span></span>
+            </span>
+            <svg class="ch-glyph" viewBox="0 0 64 64" fill="none" stroke="#8A55EF" stroke-width="3" aria-hidden="true"><path d="M26 16h12v10h10v12H38v10H26V38H16V26h10V16z"/><circle cx="32" cy="32" r="2.5" fill="#8A55EF" stroke="none"/></svg>
+          </a>
+          <a class="chapter" href="/hubs/future/" style="--hub:#FF9148;--hub-tint:#FFEADB">
+            <span class="ch-num" aria-hidden="true">04</span>
+            <span>
+              <span class="ch-name">Future Hubs <small>More · Interests · More</small></span>
+              <span class="ch-desc">Music, art, writing, ventures — new hubs start here, proposed by members.</span>
+              <span class="ch-enter">Enter the hub <span class="arr">→</span></span>
+            </span>
+            <svg class="ch-glyph" viewBox="0 0 64 64" fill="none" stroke="#FF9148" stroke-width="3" aria-hidden="true"><path d="M32 14v36M14 32h36" stroke="#171717"/><path d="M50 8c.7 5 2.6 6.9 7.6 7.6-5 .7-6.9 2.6-7.6 7.6-.7-5-2.6-6.9-7.6-7.6 5-.7 6.9-2.6 7.6-7.6z" fill="#FF9148" stroke="none"/><circle cx="12" cy="52" r="2.5" fill="#171717" stroke="none"/></svg>
+          </a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============ SCENE 04 — SCREENING ROOM ============ -->
+    <section class="section band-ink grain" id="events" aria-labelledby="eventsTitle">
+      <div class="container">
+        <p class="scene reveal"><span class="no">04</span> Events — now showing</p>
+        <div class="screen-head reveal">
+          <p class="season-no" id="eventsTitle">Season <em>01.</em></p>
+          <p class="lead" style="max-width:44ch">Sessions, matches, game nights, build nights. Real experiences, announced here first — nothing listed until it is locked.</p>
+        </div>
+        <div class="poster-grid" data-render="events-preview">
+          <noscript><p>Event listings need JavaScript. Confirmed events will be announced here — meanwhile, <a href="/events/">visit the events page</a>.</p></noscript>
+        </div>
+        <div class="status-legend reveal">
+          <span class="status status-upcoming"><span class="pulse"></span>Upcoming</span>
+          <span class="status status-ongoing"><span class="pulse"></span>Running</span>
+          <span class="status status-completed"><span class="pulse"></span>Completed</span>
+          <a class="u-link" href="/events/">All events <span class="arr">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCENE 05 — FIELD NOTES ============ -->
+    <section class="section" id="community" aria-labelledby="wallTitle">
+      <div class="container">
+        <p class="scene reveal"><span class="no">05</span> Community wall — field notes</p>
+        <div class="section-head reveal">
+          <div class="head-row">
+            <h2 class="h2" id="wallTitle">Made of moments,<br />not stock photos.</h2>
+            <span class="hand-note">real photos land here soon ↓</span>
+          </div>
+          <p class="standfirst">Workshops, matches, game nights, late-night builds. Every frame below is a labelled placeholder — genuine Yuvora photos replace them as they happen.</p>
+        </div>
+        <div class="filmstrip reveal" role="list" aria-label="Community photo placeholders">
+          <div class="frames">
+            <figure class="frame" role="listitem"><div class="frame-img" style="background:#101319;background-image:radial-gradient(#3284FF66 1.6px, transparent 1.6px);background-size:20px 20px"></div><figcaption><span class="frame-no">001</span> build nights <span class="sample-flag">placeholder</span></figcaption></figure>
+            <figure class="frame" role="listitem"><div class="frame-img" style="background:#0e1410;background-image:repeating-linear-gradient(-45deg, transparent 0 14px, #26C87844 14px 16px)"></div><figcaption><span class="frame-no">002</span> match days <span class="sample-flag">placeholder</span></figcaption></figure>
+            <figure class="frame" role="listitem"><div class="frame-img" style="background:#120f18;background-image:radial-gradient(#8A55EF66 1.6px, transparent 1.6px);background-size:16px 16px"></div><figcaption><span class="frame-no">003</span> game nights <span class="sample-flag">placeholder</span></figcaption></figure>
+            <figure class="frame" role="listitem"><div class="frame-img" style="background:#151207;background-image:repeating-linear-gradient(45deg, transparent 0 14px, #FFCA3644 14px 16px)"></div><figcaption><span class="frame-no">004</span> first ideas <span class="sample-flag">placeholder</span></figcaption></figure>
+            <figure class="frame" role="listitem"><div class="frame-img" style="background:#150f0a;background-image:radial-gradient(#FF914866 1.6px, transparent 1.6px);background-size:20px 20px"></div><figcaption><span class="frame-no">005</span> creative sessions <span class="sample-flag">placeholder</span></figcaption></figure>
+            <figure class="frame" role="listitem"><div class="frame-img" style="background:#0c0c0c;background-image:radial-gradient(#FAF9F533 1.5px, transparent 1.5px);background-size:20px 20px"></div><figcaption><span class="frame-no">006</span> your moment here <span class="sample-flag">placeholder</span></figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCENE 06 — PROJECTS ============ -->
+    <section class="section" id="showcase" aria-labelledby="showcaseTitle" style="padding-top:0">
+      <div class="container">
+        <p class="scene reveal"><span class="no">06</span> Made by our community</p>
+        <div class="section-head reveal">
+          <div class="head-row">
+            <h2 class="h2" id="showcaseTitle">Small builds.<br />Big energy.</h2>
+            <a class="u-link" href="/projects/">All projects <span class="arr">→</span></a>
+          </div>
+        </div>
+        <div data-render="projects" data-limit="2">
+          <noscript><p>Project listings need JavaScript. <a href="/projects/">Visit the projects page</a>.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCENE 07 — WORKSHOPS ============ -->
+    <section class="section" id="workshops" aria-labelledby="workshopsTitle" style="padding-top:0">
+      <div class="container">
+        <p class="scene reveal"><span class="no">07</span> Workshops &amp; status</p>
+        <div class="two-col">
+          <div class="reveal">
+            <h2 class="h2" id="workshopsTitle">Learn it.<br />Ship it. Show it.</h2>
+            <p class="standfirst" style="margin-top:1rem">Three stages, zero bureaucracy. The review criteria will be published openly before the process begins.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="/workshops/">View the board <span aria-hidden="true">→</span></a>
+              <a class="u-link" href="/collaborate/">Run a workshop <span class="arr">→</span></a>
+            </div>
+          </div>
+          <div class="reveal" data-delay="1">
+            <div class="stage-rows">
+              <div class="stage-row"><span class="stage-name"><span class="status status-ongoing"><span class="pulse"></span></span>Ongoing</span><p>What the community is learning right now.</p></div>
+              <div class="stage-row"><span class="stage-name"><span class="status status-evaluation"><span class="pulse"></span></span>Under evaluation</span><p>Finished work, reviewed in the open.</p></div>
+              <div class="stage-row"><span class="stage-name"><span class="status status-completed"><span class="pulse"></span></span>Completed</span><p>Shipped, celebrated, showcased.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCENE 08 — TEAM ============ -->
+    <section class="section" id="community-team" aria-labelledby="teamTitle" style="padding-top:0">
+      <div class="container">
+        <p class="scene reveal"><span class="no">08</span> Community &amp; leadership</p>
+        <div class="reveal">
+          <h2 class="h2" id="teamTitle" style="max-width:20ch">Run by students. No invented members, no filler bios.</h2>
+          <p class="standfirst" style="margin-top:1rem">Real people appear here only with their approval. The founding roster is being assembled now — and there is room in it for you.</p>
+          <div class="role-chips" aria-label="Open roles">
+            <span class="role-chip">Community Lead</span>
+            <span class="role-chip">Tech Organiser</span>
+            <span class="role-chip">Sporting Organiser</span>
+            <span class="role-chip">Esports Organiser</span>
+            <span class="role-chip">Events &amp; Outreach</span>
+            <span class="role-chip">Volunteers</span>
+          </div>
+          <div class="team-strip">
+            <a class="u-link" href="/team/">See open roles <span class="arr">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCENE 09 — COLLABORATE ============ -->
+    <section class="section" id="collaborate" aria-labelledby="collabTitle" style="padding-top:0">
+      <div class="container">
+        <p class="scene reveal"><span class="no">09</span> Collaborate</p>
+        <p class="collab-giant reveal" id="collabTitle">Have an idea? <a href="/collaborate/">Let's build it together.</a></p>
+        <div class="collab-ways reveal" style="margin-top:2.4rem" data-delay="1">
+          <ul class="open-rows" style="border-top:0">
+            <li><span class="n" style="--c:#3284FF">01</span><span><strong>Partner</strong> with Yuvora as a school or club.</span></li>
+            <li><span class="n" style="--c:#26C878">02</span><span><strong>Co-host</strong> events, matches, game nights.</span></li>
+            <li><span class="n" style="--c:#8A55EF">03</span><span><strong>Run</strong> a workshop in what you know.</span></li>
+          </ul>
+          <ul class="open-rows" style="border-top:0">
+            <li><span class="n" style="--c:#FF9148">04</span><span><strong>Propose</strong> a brand-new hub.</span></li>
+            <li><span class="n" style="--c:#D99A00">05</span><span><strong>Volunteer</strong> — setup, mentoring, media.</span></li>
+            <li><span class="n" style="--c:#171717">06</span><span><strong>Sponsor</strong> real community activity.</span></li>
+          </ul>
+        </div>
+        <div class="reveal" style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+          <a class="btn btn-blue" href="/collaborate/">Start a proposal <span aria-hidden="true">→</span></a>
+          <span style="font-size:0.92rem;color:var(--ink-soft)" data-contact-email></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL SCENE ============ -->
+    <section class="finale grain" aria-labelledby="joinTitle">
+      <div class="container reveal">
+        <svg class="finale-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#FAF9F5"/><circle cx="49" cy="15" r="7.5" fill="#FFCA36"/></svg>
+        <p class="slate" style="justify-content:center">Final scene — no experience needed, just curiosity</p>
+        <h2 id="joinTitle">Your interests <span class="hl">belong here.</span></h2>
+        <p>Be part of something bigger. Whether you want to build, play, create or lead, there&rsquo;s a place for you.</p>
+        <div class="hero-actions">
+          <a class="btn btn-sun" href="/collaborate/#join">Join Yuvora <span aria-hidden="true">→</span></a>
+        </div>
+        <nav class="finale-hubs" aria-label="Hubs">
+          <a href="/hubs/tech/">Tech</a>
+          <a href="/hubs/sporting/">Sporting</a>
+          <a href="/hubs/esports/">Esports</a>
+          <a href="/hubs/future/">Future</a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-cta">
+      <p class="scene"><span class="no">✳</span> Different interests. Same energy.</p>
+      <a class="big" href="/collaborate/#join">Start with hello <span class="arr">↗</span></a>
+    </div>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="footer-brand" href="/" aria-label="Yuvora home">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#FAF9F5"/><circle cx="49" cy="15" r="7.5" fill="#FFCA36"/></svg>
+            <span>yuvora</span>
+          </a>
+          <p class="footer-desc">An independent, student-led community for people who love exploring, creating, competing and bringing ideas to life.</p>
+        </div>
+        <nav aria-label="Explore">
+          <h3>Explore</h3>
+          <ul class="footer-links">
+            <li><a href="/hubs/">Hubs</a></li>
+            <li><a href="/events/">Events</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/workshops/">Workshops</a></li>
+            <li><a href="/team/">Community</a></li>
+            <li><a href="/collaborate/">Collaborate</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Hubs">
+          <h3>Hubs</h3>
+          <ul class="footer-links">
+            <li><a href="/hubs/tech/">Tech</a></li>
+            <li><a href="/hubs/sporting/">Sporting</a></li>
+            <li><a href="/hubs/esports/">Esports</a></li>
+            <li><a href="/hubs/future/">Future</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h3>Connect</h3>
+          <ul class="footer-links">
+            <li><a href="/collaborate/#join">Join Yuvora</a></li>
+            <li data-contact-email></li>
+          </ul>
+          <ul class="footer-links" data-socials style="margin-top:.8rem"></ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Yuvora · yuvora.org · Different interests. Same energy.</span>
+        <span>Privacy &amp; Terms pages will appear here once published.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/js/site.js"></script>
+</body>
+</html>
