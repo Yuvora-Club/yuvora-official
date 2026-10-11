@@ -49,6 +49,7 @@
   --font-display: "Outfit", "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
   --font-body: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+  --font-hand: "Caveat", "Segoe Print", cursive;
 
   --radius: 20px;
   --radius-pill: 999px;

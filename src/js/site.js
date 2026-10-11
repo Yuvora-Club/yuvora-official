@@ -6,7 +6,7 @@
    Nothing here loops continuously.
    ============================================================ */
 import { SITE, FORM_TYPES } from './config.js';
-import { hubBySlug, confirmedEvents, sampleEvents, confirmedProjects, sampleWorkshops, confirmedWorkshops, teamRoles } from './data.js';
+import { hubBySlug, confirmedEvents, sampleEvents, confirmedProjects, sampleProjects, sampleWorkshops, confirmedWorkshops, teamRoles, teamMembers } from './data.js';
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -28,6 +28,25 @@ function fmtDate(iso) {
     weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit',
   }).format(d);
   return { mon, day, full };
+}
+
+/* ---------- Illustrative photos ----------
+   Every photo is generic stock (NOT Yuvora people/places) and is
+   badged on-page. If the file fails to load, the <img> removes
+   itself and the designed gradient behind it shows instead —
+   no broken-image icons, no layout shift (aspect-ratio is fixed). */
+function photo(src, alt, w = 1200, h = 675) {
+  if (!src) return '';
+  return `<img src="${esc(src)}" alt="${esc(alt || '')}" width="${w}" height="${h}" loading="lazy" decoding="async" onerror="this.remove()">`;
+}
+
+const SOCIAL_LABELS = {
+  instagram: 'Instagram', youtube: 'YouTube', discord: 'Discord',
+  github: 'GitHub', x: 'X', linkedin: 'LinkedIn',
+};
+function socialLabel(key) {
+  return SOCIAL_LABELS[String(key).toLowerCase()] ||
+    String(key).charAt(0).toUpperCase() + String(key).slice(1);
 }
 
 /* ---------- Scroll progress bar ---------- */
@@ -88,7 +107,7 @@ function fmtDate(iso) {
       return;
     }
     el.innerHTML = entries
-      .map(([name, url]) => `<li><a href="${esc(url)}" rel="noopener">${esc(name)}</a></li>`)
+      .map(([name, url]) => `<li><a href="${esc(url)}" target="_blank" rel="noopener">${esc(socialLabel(name))}</a></li>`)
       .join('');
   });
 
@@ -121,6 +140,83 @@ function fmtDate(iso) {
   items.forEach((el) => io.observe(el));
 })();
 
+/* ---------- Survey invitation modal ----------
+   Content + timing live in SITE.survey (config.js) — set
+   `enabled: false` there to turn it off. Shown ONCE per browsing
+   session (sessionStorage) after a delay, only while the tab is
+   visible. Focus moves into the dialog on open and returns on close;
+   Escape, backdrop click, and both buttons dismiss. No animation
+   when reduced-motion is preferred. Never claims a submission. */
+(function initSurvey() {
+  const cfg = SITE.survey || {};
+  if (!cfg.enabled || !cfg.url) return;
+  let dismissed = false;
+  try { dismissed = window.sessionStorage.getItem(cfg.storageKey || 'yuvora-survey-dismissed') === '1'; } catch { dismissed = false; }
+  if (dismissed) return;
+
+  const backdrop = document.createElement('div');
+  backdrop.className = 'survey-backdrop';
+  backdrop.hidden = true;
+  backdrop.innerHTML = `
+    <div class="survey-modal" role="dialog" aria-modal="true" aria-labelledby="surveyTitle">
+      <button class="survey-close" type="button" aria-label="Dismiss survey invitation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <p class="kicker"><span class="coord">◆</span> ${esc(cfg.label || 'Survey')}</p>
+      <h2 id="surveyTitle">${esc(cfg.heading || '')}</h2>
+      <p class="survey-text">${esc(cfg.description || '')}</p>
+      <div class="survey-actions">
+        <a class="btn btn-signal" href="${esc(cfg.url)}" target="_blank" rel="noopener">${esc(cfg.buttonText || 'Take the Survey')} <span aria-hidden="true">↗</span></a>
+        <button class="survey-later" type="button">${esc(cfg.laterText || 'Maybe Later')}</button>
+      </div>
+      ${cfg.note ? `<p class="survey-note">${esc(cfg.note)}</p>` : ''}
+    </div>`;
+  document.body.appendChild(backdrop);
+
+  const modal = $('.survey-modal', backdrop);
+  const closeBtn = $('.survey-close', backdrop);
+  const laterBtn = $('.survey-later', backdrop);
+  let lastFocus = null;
+
+  const remember = () => {
+    try { window.sessionStorage.setItem(cfg.storageKey || 'yuvora-survey-dismissed', '1'); } catch { /* private mode: show at most once per load */ }
+  };
+  const open = () => {
+    if (!backdrop.hidden) return;
+    lastFocus = document.activeElement;
+    backdrop.hidden = false;
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => backdrop.classList.add('open'));
+    closeBtn.focus({ preventScroll: true });
+  };
+  const close = () => {
+    if (backdrop.hidden) return;
+    remember();
+    backdrop.classList.remove('open');
+    backdrop.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  };
+
+  closeBtn.addEventListener('click', close);
+  laterBtn.addEventListener('click', close);
+  backdrop.addEventListener('click', (e) => { if (e.target === backdrop) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  // Keep focus inside while open (lightweight trap for a single dialog).
+  document.addEventListener('focusin', (e) => {
+    if (!backdrop.hidden && !modal.contains(e.target)) { e.stopPropagation(); closeBtn.focus(); }
+  }, true);
+
+  window.setTimeout(() => {
+    if (document.visibilityState === 'visible') open();
+    else {
+      const onVis = () => {
+        if (document.visibilityState === 'visible') { document.removeEventListener('visibilitychange', onVis); open(); }
+      };
+      document.addEventListener('visibilitychange', onVis);
+    }
+  }, Math.max(0, Number(cfg.delayMs) || 0));
+})();
 /* ---------- Card builders (content-driven) ---------- */
 function hubTag(slug) {
   const hub = hubBySlug(slug);
@@ -129,13 +225,39 @@ function hubTag(slug) {
 
 /* AA-safe small-text colors per hub (fills stay canonical in data.js). */
 const HUB_INK = { tech: '#1F5FD6', sporting: '#1E7A4E', esports: '#6A3ECF', future: '#A85A1C' };
+function hubInk(slug) {
+  const hub = hubBySlug(slug);
+  return hub.ink || HUB_INK[slug] || 'var(--ink-soft)';
+}
+
+/* ---------- Hub tile photos (progressive enhancement) ----------
+   Tiles keep their full static content (links work with JS off);
+   this only injects the illustrative photo header from data.js,
+   so image URLs stay centralized for the owner to swap. */
+(function enhanceHubTiles() {
+  $$('.tile[href^="/hubs/"]').forEach((tile) => {
+    if ($('.tile-photo', tile)) return;
+    const m = (tile.getAttribute('href') || '').match(/^\/hubs\/([^/]+)\/$/);
+    if (!m) return;
+    const hub = hubBySlug(m[1]);
+    if (!hub || hub.slug !== m[1] || !hub.image) return;
+    const art = document.createElement('span');
+    art.className = 'tile-photo';
+    art.setAttribute('aria-hidden', 'true');
+    art.innerHTML = `${photo(hub.image, '', 800, 450)}<span class="photo-tag">Illustrative photo</span>`;
+    const old = $('.tile-art', tile);
+    if (old) old.replaceWith(art);
+    else tile.insertBefore(art, tile.firstChild);
+  });
+})();
 
 function eventPoster(ev, i = 0) {
   const hub = hubBySlug(ev.hub);
   const { mon, day, full } = fmtDate(ev.dateISO);
   const statusLabel = { upcoming: 'Upcoming', running: 'Running', completed: 'Completed' }[ev.status] || 'Upcoming';
   return `
-  <article class="poster" style="--hub:${hub.color};--hub-ink:${HUB_INK[ev.hub] || 'var(--ink-soft)'}">
+  <article class="poster" style="--hub:${hub.color};--hub-ink:${hubInk(ev.hub)}">
+    ${ev.image ? `<div class="poster-photo" aria-hidden="true">${photo(ev.image, '', 800, 450)}</div>` : ''}
     <div class="poster-top">
       <p class="poster-date"><small>${mon} · ${esc(hub.name)}</small>${day}</p>
       <span class="poster-index">${String(i + 1).padStart(2, '0')}</span>
@@ -157,18 +279,22 @@ function eventPoster(ev, i = 0) {
 
 function projectFeature(p, i) {
   const hub = hubBySlug(p.hub);
-  return `
-  <article class="feature reveal${i % 2 ? ' flip' : ''}">
-    <div class="feature-visual" style="background:${hub.tint};background-image:radial-gradient(${hub.color}44 1.6px, transparent 1.6px);background-size:18px 18px">
+  const visual = p.image
+    ? `<div class="feature-photo" aria-hidden="true">${photo(p.image, '', 800, 600)}${p.sample ? '<span class="photo-tag">Illustrative photo</span>' : ''}</div>`
+    : `<div class="feature-visual" style="background:${hub.tint};background-image:radial-gradient(${hub.color}44 1.6px, transparent 1.6px);background-size:18px 18px">
       <svg class="motif" viewBox="0 0 48 48" fill="none" stroke="${hub.color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="2" fill="#fff" stroke="#171717" stroke-width="3"/><path d="M18 20l-4 4 4 4M30 20l4 4-4 4M27 17l-6 14"/></svg>
       <span class="ghost-num" aria-hidden="true">0${i + 1}</span>
       ${p.sample ? '<span class="sample-flag" style="position:absolute;top:1rem;left:1rem">sample</span>' : ''}
-    </div>
+    </div>`;
+  return `
+  <article class="feature reveal${i % 2 ? ' flip' : ''}">
+    ${visual}
     <div class="feature-body">
       ${hubTag(p.hub)}
       <h3>${esc(p.title)}</h3>
       <p class="byline">by ${esc(p.creator)}</p>
       <p class="desc">${esc(p.description)}</p>
+      ${p.sample ? '<p><span class="sample-flag">sample — layout preview</span></p>' : ''}
       ${p.link ? `<a class="u-link" href="${esc(p.link)}" rel="noopener">View project <span class="arr">→</span></a>` : ''}
     </div>
   </article>`;
@@ -228,14 +354,19 @@ const ICONS = {
     const live = limit ? confirmedProjects.slice(0, limit) : confirmedProjects;
     if (live.length) {
       el.innerHTML = live.map(projectFeature).join('');
-    } else {
-      el.innerHTML = openBench({
+      return;
+    }
+    const samples = limit ? sampleProjects.slice(0, limit) : sampleProjects;
+    el.innerHTML = (samples.length
+      ? `<p class="kicker"><span class="coord">Pv 00</span> Layout preview — samples, not real projects</p>
+         <div>${samples.map(projectFeature).join('')}</div>`
+      : '')
+      + openBench({
         bench: 'L 01',
         title: 'The shelf is empty — for now.',
         text: 'Built a website, won a match, shipped a game, made something you are proud of? Nothing here is fabricated — every future entry credits its real creator, with approval.',
         actions: '<a class="btn btn-sm btn-signal" href="/collaborate/">Submit your project</a><a class="btn btn-sm btn-ghost" href="/hubs/">Find your hub</a>',
       });
-    }
   });
 })();
 
@@ -264,17 +395,60 @@ const ICONS = {
   }).join('');
 })();
 
-/* ---------- Team ---------- */
+/* ---------- Team ----------
+   Real members (teamMembers) render first as editorial features —
+   leads get a distinctive treatment. Vacant roles whose title is
+   already held by a member are hidden, the rest render as open
+   slots. No members yet → honest "crew assembling" state. */
+function initials(name) {
+  return String(name || '?').trim().split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase() || '?';
+}
+function memberLinks(links) {
+  const entries = Object.entries(links || {});
+  if (!entries.length) return '';
+  return `<p class="member-links">${entries
+    .map(([label, url]) => `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)}</a>`)
+    .join('')}</p>`;
+}
 (function renderTeam() {
   const grid = $('[data-render="team"]');
   if (!grid) return;
-  grid.innerHTML = teamRoles.map((m) => `
-    <div class="member-card reveal">
-      <div class="member-avatar" aria-hidden="true">?</div>
-      <p class="role">${esc(m.role)}</p>
-      <h3>Profile coming soon</h3>
-      <p class="bio">${esc(m.note)} Real names and photos appear only with approval.</p>
+  const members = teamMembers.filter((m) => m && m.name && m.role);
+  const held = new Set(members.map((m) => String(m.role).toLowerCase()));
+  const open = teamRoles.filter((r) => !held.has(String(r.role).toLowerCase()));
+  const people = members.map((m, i) => `
+    <article class="crew-card reveal${m.lead ? ' crew-lead' : ''}">
+      <div class="crew-photo" aria-hidden="true">
+        ${m.photo
+          ? `<img src="${esc(m.photo)}" alt="" width="320" height="320" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('img-failed');this.remove()">`
+          : ''}
+        <span class="crew-mono">${esc(initials(m.name))}</span>
+        <span class="crew-index">0${i + 1}</span>
+      </div>
+      <div class="crew-body">
+        <p class="role">${esc(m.role)}${m.lead ? ' · <span class="lead-tag">Lead</span>' : ''}</p>
+        <h3>${esc(m.name)}</h3>
+        ${m.bio ? `<p class="bio">${esc(m.bio)}</p>` : ''}
+        ${memberLinks(m.links)}
+      </div>
+    </article>`).join('');
+  const slots = open.map((r) => `
+    <div class="crew-card crew-open reveal">
+      <div class="crew-photo" aria-hidden="true">
+        <span class="crew-mono">?</span>
+      </div>
+      <div class="crew-body">
+        <p class="role">${esc(r.role)} · <span class="open-tag">Open role</span></p>
+        <h3>Profile coming soon</h3>
+        <p class="bio">${esc(r.note)} Real names and photos appear only with approval.</p>
+      </div>
     </div>`).join('');
+  grid.innerHTML = (members.length
+    ? `<p class="kicker"><span class="coord">C 00</span> The crew — real members, approved profiles</p>
+       <div class="crew-list">${people}</div>` : '')
+    + (open.length
+      ? `<p class="kicker" style="margin-top:2.5rem"><span class="coord">C 01</span> Open roles — come claim one</p>
+         <div class="crew-list">${slots}</div>` : '');
 })();
 
 /* ---------- Collaborate form ---------- */
