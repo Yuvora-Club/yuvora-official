@@ -6,14 +6,14 @@
   <title>Future Hubs — More interests. More possibilities. — Yuvora</title>
   <meta name="description" content="Yuvora Future Hubs: music, art, writing, entrepreneurship and whatever members dream up next. Propose the next hub." />
   <link rel="canonical" href="https://yuvora.org/hubs/future/" />
-  <meta name="theme-color" content="#FAF9F5" />
+  <meta name="theme-color" content="#F7F3EA" />
   <meta property="og:title" content="Future Hubs — Yuvora" />
   <meta property="og:description" content="More interests. More possibilities. Propose the next Yuvora hub." />
   <meta property="og:url" content="https://yuvora.org/hubs/future/" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/src/css/base.css" />
   <link rel="stylesheet" href="/src/css/components.css" />
   <link rel="stylesheet" href="/src/css/home.css" />
@@ -53,7 +53,28 @@
       <p class="lead">Music, art, writing, entrepreneurship, science — whatever the community dreams up next. New hubs start here, proposed by members like you.</p>
     </div>
 
-    <section class="section" style="padding-top:0" aria-label="About Future Hubs">
+    <div class="container">
+      <figure class="plate-art reveal" aria-label="Unmapped country illustration">
+        <svg viewBox="0 0 640 400" role="img" aria-label="Dotted unmapped expanse with an expedition path">
+          <defs>
+            <pattern id="futDotsHub" width="26" height="26" patternUnits="userSpaceOnUse">
+              <circle cx="4" cy="4" r="2.2" fill="#16211C" opacity="0.35"/>
+            </pattern>
+            <marker id="futHeadHub" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#16211C"/>
+            </marker>
+          </defs>
+          <rect x="0" y="0" width="640" height="400" fill="#FBE3D2"/>
+          <rect x="0" y="0" width="640" height="400" fill="url(#futDotsHub)"/>
+          <path d="M50,340 C190,320 220,200 340,195 C460,190 500,120 585,80" fill="none" stroke="#16211C" stroke-width="3" stroke-dasharray="10 9" marker-end="url(#futHeadHub)"/>
+          <circle cx="585" cy="80" r="14" fill="#FF5A3C" stroke="#16211C" stroke-width="3"/>
+          <text x="28" y="52" font-family="Sora, 'Segoe UI', sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#16211C">N 04 — UNMAPPED</text>
+        </svg>
+        <figcaption>Fig. 04 — Unmapped country, proposed by members</figcaption>
+      </figure>
+    </div>
+
+    <section class="section" style="padding-top:clamp(2rem,5vw,3.5rem)" aria-label="About Future Hubs">
       <div class="container two-col" style="align-items:start">
         <div class="reveal">
           <h2 class="h3">How a new hub is born</h2>
@@ -70,7 +91,7 @@
           <h3 class="h3" style="margin-top:.5rem">Pitch the next hub.</h3>
           <p style="color:var(--ink-soft)">Tell us the interest, who else is in, and what a first session looks like. We will help you run it.</p>
           <div class="hero-actions">
-            <a class="btn btn-blue" href="/collaborate/">Propose a hub</a>
+            <a class="btn btn-primary" href="/collaborate/">Propose a hub</a>
             <a class="btn btn-ghost" href="/events/">See pop-ups</a>
           </div>
         </div>

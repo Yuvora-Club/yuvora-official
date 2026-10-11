@@ -176,8 +176,8 @@ function projectFeature(p, i) {
 
 function openBench({ bench, title, text, actions }) {
   return `
-  <div class="open-bench reveal">
-    <span class="bench"><i aria-hidden="true"></i>${bench}</span>
+  <div class="field-empty reveal">
+    <p class="kicker"><span class="coord">${bench}</span> Open log</p>
     <h3>${title}</h3>
     <p>${text}</p>
     <div class="invite-row">${actions}</div>
@@ -196,10 +196,10 @@ const ICONS = {
     preview.innerHTML = live.length
       ? `<div class="poster-grid">${live.map((e, i) => eventPoster(e, i)).join('')}</div>`
       : openBench({
-        bench: 'Open bench / Events',
+        bench: 'L 01',
         title: 'Nothing on the calendar yet.',
         text: 'Season 01 is being set up. Once dates lock, they appear here with venues and registration — propose the first one.',
-        actions: '<a class="btn btn-sm btn-sun" href="/collaborate/">Propose an event</a><a class="btn btn-sm btn-ghost" href="/hubs/">Explore the hubs</a>',
+        actions: '<a class="btn btn-sm btn-signal" href="/collaborate/">Propose an event</a><a class="btn btn-sm btn-ghost" href="/hubs/">Explore the hubs</a>',
       });
   }
 
@@ -210,10 +210,10 @@ const ICONS = {
     } else {
       full.innerHTML = `
         ${openBench({
-          bench: 'Open bench / Events',
+          bench: 'L 02',
           title: 'No confirmed events yet.',
           text: 'We are setting up the first season of sessions, matches and game nights. Once dates lock, they appear here with venues, eligibility and registration.',
-          actions: '<a class="btn btn-sm btn-sun" href="/collaborate/">Propose an event</a><a class="btn btn-sm btn-ghost" href="/hubs/">Explore the hubs</a>',
+          actions: '<a class="btn btn-sm btn-signal" href="/collaborate/">Propose an event</a><a class="btn btn-sm btn-ghost" href="/hubs/">Explore the hubs</a>',
         })}
         <h3 class="h3" style="margin:2.5rem 0 1.2rem">Poster preview <span class="sample-flag">samples</span></h3>
         <div class="poster-grid">${sampleEvents.map((e, i) => eventPoster(e, i)).join('')}</div>`;
@@ -230,10 +230,10 @@ const ICONS = {
       el.innerHTML = live.map(projectFeature).join('');
     } else {
       el.innerHTML = openBench({
-        bench: 'Open bench / Projects',
+        bench: 'L 01',
         title: 'The shelf is empty — for now.',
         text: 'Built a website, won a match, shipped a game, made something you are proud of? Nothing here is fabricated — every future entry credits its real creator, with approval.',
-        actions: '<a class="btn btn-sm btn-sun" href="/collaborate/">Submit your project</a><a class="btn btn-sm btn-ghost" href="/hubs/">Find your hub</a>',
+        actions: '<a class="btn btn-sm btn-signal" href="/collaborate/">Submit your project</a><a class="btn btn-sm btn-ghost" href="/hubs/">Find your hub</a>',
       });
     }
   });

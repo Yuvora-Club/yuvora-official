@@ -1,68 +1,83 @@
 /* ============================================================
-   YUVORA — home.css (v4 "THE OPEN STUDIO")
-   Homepage only: calm asymmetric hero, hub index, side-by-side
-   previews, join steps. Motion is reveal/hover only — nothing
-   loops. At most zero overlaps; none here.
+   YUVORA — home.css (v5 "TERRAIN")
+   Homepage only: orientation hero, breakout panorama, hub plates,
+   field log, route in. Reveal/hover only — nothing loops.
    ============================================================ */
 
-/* ============ HERO — text-left, sketch-right (12-col asymmetric) ============ */
-.hero {
-  padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2.5rem, 5vw, 4rem);
-  overflow: clip;
-}
-.hero-grid {
+/* ============ HERO — orientation, headline stays moderate ============ */
+.hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 4vw, 3rem); }
+.hero-split {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 2rem;
-  align-items: center;
+  align-items: end;
 }
 .hero-copy { grid-column: 1 / span 7; }
 .hero-title {
   font-size: clamp(2.4rem, 1.5rem + 4.5vw, 4rem);
   line-height: 1.04;
-  letter-spacing: -0.025em;
-  max-width: 14ch;
+  max-width: 13ch;
   margin-top: 1.3rem;
 }
-/* The one handmade touch: a single drawn underline, used once */
-.u-swish { position: relative; display: inline-block; white-space: nowrap; }
-.u-swish svg {
-  position: absolute;
-  left: -2%; bottom: -0.3em;
-  width: 104%; height: 0.3em;
-  overflow: visible;
+.hero-title .sig { color: var(--signal-deep); }
+.hero-sub { margin-top: 1.2rem; max-width: 50ch; color: var(--ink-soft); }
+/* Live mini-index: real navigation, not decoration */
+.terrain-index { grid-column: 8 / span 5; list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line-strong); }
+.terrain-index li { border-bottom: 1px solid var(--line); }
+.terrain-index a {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.9rem;
+  align-items: baseline;
+  padding: 0.8rem 0.25rem;
+  text-decoration: none;
+  transition: padding-left 0.2s ease, background 0.2s ease;
 }
-.hero-sub { margin-top: 1.3rem; max-width: 52ch; color: var(--ink-soft); font-size: clamp(1.05rem, 1.6vw, 1.2rem); }
-.hero-visual { grid-column: 8 / span 5; }
-.hero-visual figure { margin: 0; }
-.hero-visual figcaption {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-top: 0.7rem;
-}
+.terrain-index a:hover { padding-left: 0.7rem; background: rgba(255, 253, 247, 0.6); }
+.terrain-index .t-coord { font-family: var(--font-display); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; color: var(--signal-deep); }
+.terrain-index .t-name { font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; }
+.terrain-index .t-name small { display: block; font-family: var(--font-body); font-weight: 500; font-size: 0.85rem; color: var(--ink-soft); margin-top: 0.1rem; }
+.terrain-index .t-chip { width: 0.9rem; height: 0.9rem; background: var(--c); border-radius: 1px; transform: translateY(1px); }
 @media (max-width: 900px) {
   .hero-copy { grid-column: 1 / -1; }
-  .hero-visual { grid-column: 1 / -1; max-width: 26rem; }
+  .terrain-index { grid-column: 1 / -1; }
 }
 
-/* ============ Section headers — bench + restrained title ============ */
-.section-head { margin-bottom: clamp(1.8rem, 4vw, 2.8rem); max-width: 60rem; }
+/* ============ PANORAMA — full-bleed duotone plate ============ */
+.panorama { margin-inline: calc(50% - 50vw); margin-top: clamp(2rem, 5vw, 3.5rem); }
+.panorama svg { width: 100%; height: auto; border-block: 1px solid var(--line-strong); }
+.panorama figcaption {
+  width: min(var(--container), 100% - 2.5rem);
+  margin: 0.7rem auto 0;
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ============ Section headers ============ */
+.section-head { margin-bottom: clamp(1.8rem, 4vw, 2.8rem); max-width: 62rem; }
 .section-head h2 { max-width: 20ch; }
 .section-head .head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem 2.5rem; flex-wrap: wrap; }
 .section-head p.standfirst { color: var(--ink-soft); max-width: 62ch; margin-top: 0.9rem; font-size: 1.02rem; }
 
-/* ============ Previews — making + happening, side by side ============ */
-.preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.25rem, 3vw, 2.5rem); align-items: start; }
-.preview-block h2 { font-size: clamp(1.5rem, 1.3rem + 1.2vw, 2rem); margin: 0 0 1rem; max-width: 18ch; }
-.preview-block .open-bench { margin-top: 0; }
-@media (max-width: 860px) { .preview-grid { grid-template-columns: 1fr; } }
+/* ============ FIELD LOG — sticky header, stacked slots ============ */
+.log-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; align-items: start; }
+.log-head { grid-column: 1 / span 4; }
+@media (min-width: 901px) { .log-head { position: sticky; top: 6rem; } }
+.log-head h2 { max-width: 12ch; }
+.log-head p { color: var(--ink-soft); margin-top: 0.9rem; max-width: 38ch; }
+.log-slots { grid-column: 5 / span 8; display: flex; flex-direction: column; gap: 1.4rem; }
+@media (max-width: 900px) {
+  .log-head { grid-column: 1 / -1; }
+  .log-slots { grid-column: 1 / -1; }
+}
 
-/* ============ Join steps — numbered rows, not cards ============ */
-.join-steps { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line-strong); counter-reset: step; }
-.join-steps > li {
+/* ============ ROUTE IN — coordinate rows + signal action ============ */
+.route-steps { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line-strong); counter-reset: step; }
+.route-steps > li {
   counter-increment: step;
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -71,21 +86,20 @@
   padding: 1.15rem 0.25rem;
   border-bottom: 1px solid var(--line);
 }
-.join-steps > li::before {
-  content: "0" counter(step);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 500;
+.route-steps > li::before {
+  content: "N 0" counter(step);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--paper);
-  background: var(--ink);
-  border-radius: var(--radius);
-  padding: 0.25rem 0.55rem;
+  color: var(--signal-deep);
+  white-space: nowrap;
 }
-.join-steps h3 { font-size: 1.2rem; }
-.join-steps p { color: var(--ink-soft); font-size: 0.96rem; max-width: 60ch; margin-top: 0.15rem; }
-.join-steps .u-link { font-size: 0.95rem; white-space: nowrap; }
+.route-steps h3 { font-size: 1.2rem; }
+.route-steps p { color: var(--ink-soft); font-size: 0.96rem; max-width: 60ch; margin-top: 0.15rem; }
+.route-steps .u-link { font-size: 0.95rem; white-space: nowrap; }
+.route-cta { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 @media (max-width: 640px) {
-  .join-steps > li { grid-template-columns: auto 1fr; }
-  .join-steps .u-link { grid-column: 2; justify-self: start; }
+  .route-steps > li { grid-template-columns: auto 1fr; }
+  .route-steps .u-link { grid-column: 2; justify-self: start; }
 }
