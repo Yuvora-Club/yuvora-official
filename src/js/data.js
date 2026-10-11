@@ -8,6 +8,7 @@
    - Never move a sample into a `confirmed*` array.
    - Never add real names, numbers, sponsors or logos here
      unless verified. Placeholders stay placeholders.
+   - Every placeholder block below carries a `// PLACEHOLDER:` marker.
    ============================================================ */
 
 export const HUBS = [
@@ -60,8 +61,8 @@ export const HUBS = [
 /* ---------- Events ----------
    confirmedEvents is intentionally empty: there are no verified
    events yet, so the site renders an honest empty state.
-   sampleEvents exist ONLY to preview the card design and are
-   always badged "Sample" — never presented as real. */
+   PLACEHOLDER: sampleEvents exist ONLY to preview the card design
+   and are always badged "Sample" — never presented as real. */
 export const confirmedEvents = [];
 
 export const sampleEvents = [
@@ -95,7 +96,8 @@ export const confirmedProjects = [];
 /* ---------- Workshops & project status ----------
    The formal evaluation process is not established yet, so the
    board below shows sample items (badged) plus honest empty
-   states. Replace with real items when the process exists. */
+   states. Replace with real items when the process exists.
+   PLACEHOLDER: sampleWorkshops are layout previews only. */
 export const sampleWorkshops = [
   {
     title: 'Sample: Intro to Game Logic',
@@ -117,7 +119,8 @@ export const confirmedWorkshops = [];
 
 /* ---------- Team ----------
    No published team members yet. Roles below are structural
-   placeholders — NOT people. Never invent names or bios. */
+   placeholders — NOT people. Never invent names or bios.
+   PLACEHOLDER: teamRoles render as vacant "Profile coming soon" rows. */
 export const teamRoles = [
   { role: 'Community Lead', vacant: true, note: 'Sets direction and keeps every hub thriving.' },
   { role: 'Tech Hub Organiser', vacant: true, note: 'Runs build nights, sessions and demos.' },

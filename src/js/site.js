@@ -1,15 +1,14 @@
 /* ============================================================
-   YUVORA — site.js (v3 "SIGNAL IN THE DARK")
-   Shared behaviour: nav (transparent over the opening frame),
-   footer enhancement, reveal-on-scroll, constellation drift,
+   YUVORA — site.js (v4 "THE OPEN STUDIO")
+   Shared behaviour: nav, footer enhancement, reveal-on-scroll,
    content rendering (posters / features / ledger / people),
    forms. Vanilla JS, no dependencies. Reduced-motion respected.
+   Nothing here loops continuously.
    ============================================================ */
 import { SITE, FORM_TYPES } from './config.js';
 import { hubBySlug, confirmedEvents, sampleEvents, confirmedProjects, sampleWorkshops, confirmedWorkshops, teamRoles } from './data.js';
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const finePointer = window.matchMedia('(pointer: fine)').matches;
 
 /* ---------- Helpers ---------- */
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -45,7 +44,7 @@ function fmtDate(iso) {
   update();
 })();
 
-/* ---------- Nav: transparent over the opening frame, solid after ---------- */
+/* ---------- Mobile nav ---------- */
 (function initNav() {
   const header = $('#siteHeader');
   const toggle = $('#navToggle');
@@ -61,18 +60,6 @@ function fmtDate(iso) {
   $$('.nav-links a', header).forEach((a) => a.addEventListener('click', close));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); toggle.blur(); } });
   window.addEventListener('resize', () => { if (window.innerWidth > 900) close(); });
-
-  const hero = $('.hero-dark');
-  const onScroll = () => {
-    header.classList.toggle('scrolled', window.scrollY > 8);
-    if (hero) {
-      header.classList.toggle('transparent', window.scrollY < hero.offsetHeight - 90);
-    } else {
-      header.classList.remove('transparent');
-    }
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
 
   const here = window.location.pathname.replace(/\/index\.html?$/, '/');
   $$('.nav-links a', header).forEach((a) => {
@@ -105,14 +92,14 @@ function fmtDate(iso) {
       .join('');
   });
 
-  // Give every page the same composed sign-off.
+  // Give every page the same composed sign-off (homepage opts out
+  // with data-no-cta because its join strip already closes the page).
   $$('.site-footer').forEach((foot) => {
-    if ($('.footer-cta', foot)) return;
+    if ($('.footer-cta', foot) || foot.hasAttribute('data-no-cta')) return;
     const wrap = foot.querySelector(':scope > .container');
     const cta = document.createElement('div');
     cta.className = 'container footer-cta';
-    cta.innerHTML = `<p class="scene"><span class="no">✳</span> Different interests. Same energy.</p>
-      <a class="big" href="/collaborate/#join">Start with hello <span class="arr">↗</span></a>`;
+    cta.innerHTML = `<a class="big" href="/collaborate/#join">Start with hello <span class="arr">↗</span></a>`;
     if (wrap) foot.insertBefore(cta, wrap);
     else foot.prepend(cta);
   });
@@ -134,69 +121,36 @@ function fmtDate(iso) {
   items.forEach((el) => io.observe(el));
 })();
 
-/* ---------- Constellation: gentle pointer drift ---------- */
-(function initHero() {
-  const stage = $('#artStage');
-  if (!stage) return;
-  if (!finePointer || prefersReducedMotion) return;
-  const layers = $$('[data-depth]', stage);
-  if (!layers.length) return;
-  const hero = stage.closest('.hero-dark') || stage;
-  hero.addEventListener('pointermove', (e) => {
-    const r = hero.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    layers.forEach((l) => {
-      const d = parseFloat(l.dataset.depth || '0');
-      l.style.translate = `${(-x * d * 18).toFixed(1)}px ${(-y * d * 18).toFixed(1)}px`;
-    });
-  });
-  hero.addEventListener('pointerleave', () => {
-    layers.forEach((l) => { l.style.translate = '0px 0px'; });
-  });
-})();
-
 /* ---------- Card builders (content-driven) ---------- */
 function hubTag(slug) {
   const hub = hubBySlug(slug);
   return `<span class="tag"><span class="dot" style="--tag-dot:${hub.color};background:${hub.color}"></span>${esc(hub.name)}</span>`;
 }
 
+/* AA-safe small-text colors per hub (fills stay canonical in data.js). */
+const HUB_INK = { tech: '#1F5FD6', sporting: '#1E7A4E', esports: '#6A3ECF', future: '#A85A1C' };
+
 function eventPoster(ev, i = 0) {
   const hub = hubBySlug(ev.hub);
   const { mon, day, full } = fmtDate(ev.dateISO);
   const statusLabel = { upcoming: 'Upcoming', running: 'Running', completed: 'Completed' }[ev.status] || 'Upcoming';
   return `
-  <article class="poster" style="--hub:${hub.color}">
+  <article class="poster" style="--hub:${hub.color};--hub-ink:${HUB_INK[ev.hub] || 'var(--ink-soft)'}">
     <div class="poster-top">
       <p class="poster-date"><small>${mon} · ${esc(hub.name)}</small>${day}</p>
       <span class="poster-index">${String(i + 1).padStart(2, '0')}</span>
     </div>
     <h3>${esc(ev.title)}</h3>
     <div class="poster-meta">
-      <span class="status status-${esc(ev.status)}"><span class="pulse"></span>${statusLabel}</span>
+      <span class="status status-${esc(ev.status)}"><span class="dot"></span>${statusLabel}</span>
       ${ev.sample ? '<span class="sample-flag">sample</span>' : ''}
     </div>
     <p>${esc(ev.description)}</p>
     <div class="poster-foot">
       <span class="venue"><time datetime="${esc(ev.dateISO)}">${esc(full)}</time> · ${esc(ev.venue)}</span>
       ${ev.sample
-        ? '<span style="font-size:.84rem;color:var(--ink-faint)">Demo layout — signups open with real events.</span>'
+        ? '<span style="font-size:.84rem;color:var(--ink-soft)">Demo layout — signups open with real events.</span>'
         : `<a class="u-link" style="font-size:.95rem" href="${esc(ev.link || '/events/')}">Details <span class="arr">→</span></a>`}
-    </div>
-  </article>`;
-}
-
-function featuredPoster() {
-  return `
-  <article class="poster poster-big">
-    <span class="slate">✳ Season 01</span>
-    <p class="ghost-word" aria-hidden="true">SOON</p>
-    <h3>The first season is loading…</h3>
-    <p>Build nights, match days, game nights, workshops. Dates lock here first — with venues, eligibility and registration. Sample posters beside this one show the layout; they are not real events.</p>
-    <div class="poster-foot">
-      <span class="status status-upcoming"><span class="pulse"></span>Announced soon</span>
-      <a class="u-link" style="font-size:.95rem;color:var(--paper-strong)" href="/events/">How events work <span class="arr">→</span></a>
     </div>
   </article>`;
 }
@@ -220,13 +174,12 @@ function projectFeature(p, i) {
   </article>`;
 }
 
-function openCall({ title, text, actions }) {
+function openBench({ bench, title, text, actions }) {
   return `
-  <div class="open-call reveal">
-    <div>
-      <h3>${title}</h3>
-      <p>${text}</p>
-    </div>
+  <div class="open-bench reveal">
+    <span class="bench"><i aria-hidden="true"></i>${bench}</span>
+    <h3>${title}</h3>
+    <p>${text}</p>
     <div class="invite-row">${actions}</div>
   </div>`;
 }
@@ -240,9 +193,14 @@ const ICONS = {
   const preview = $('[data-render="events-preview"]');
   if (preview) {
     const live = confirmedEvents.slice(0, 2);
-    preview.innerHTML = featuredPoster() + (live.length
-      ? live.map((e, i) => eventPoster(e, i + 1)).join('')
-      : sampleEvents.slice(0, 2).map((e, i) => eventPoster(e, i + 1)).join(''));
+    preview.innerHTML = live.length
+      ? `<div class="poster-grid">${live.map((e, i) => eventPoster(e, i)).join('')}</div>`
+      : openBench({
+        bench: 'Open bench / Events',
+        title: 'Nothing on the calendar yet.',
+        text: 'Season 01 is being set up. Once dates lock, they appear here with venues and registration — propose the first one.',
+        actions: '<a class="btn btn-sm btn-sun" href="/collaborate/">Propose an event</a><a class="btn btn-sm btn-ghost" href="/hubs/">Explore the hubs</a>',
+      });
   }
 
   const full = $('[data-render="events-full"]');
@@ -251,11 +209,12 @@ const ICONS = {
       full.innerHTML = `<div class="poster-grid">${confirmedEvents.map((e, i) => eventPoster(e, i)).join('')}</div>`;
     } else {
       full.innerHTML = `
-        <div class="empty-state">
-          <h3>No confirmed events yet.</h3>
-          <p>We are setting up the first season of sessions, matches and game nights. Once dates lock, they appear here with venues, eligibility and registration.</p>
-          <div class="invite-row"><a class="btn btn-sm btn-primary" href="/collaborate/">Propose an event</a><a class="btn btn-sm btn-ghost" href="/hubs/">Explore the hubs</a></div>
-        </div>
+        ${openBench({
+          bench: 'Open bench / Events',
+          title: 'No confirmed events yet.',
+          text: 'We are setting up the first season of sessions, matches and game nights. Once dates lock, they appear here with venues, eligibility and registration.',
+          actions: '<a class="btn btn-sm btn-sun" href="/collaborate/">Propose an event</a><a class="btn btn-sm btn-ghost" href="/hubs/">Explore the hubs</a>',
+        })}
         <h3 class="h3" style="margin:2.5rem 0 1.2rem">Poster preview <span class="sample-flag">samples</span></h3>
         <div class="poster-grid">${sampleEvents.map((e, i) => eventPoster(e, i)).join('')}</div>`;
     }
@@ -270,7 +229,8 @@ const ICONS = {
     if (live.length) {
       el.innerHTML = live.map(projectFeature).join('');
     } else {
-      el.innerHTML = openCall({
+      el.innerHTML = openBench({
+        bench: 'Open bench / Projects',
         title: 'The shelf is empty — for now.',
         text: 'Built a website, won a match, shipped a game, made something you are proud of? Nothing here is fabricated — every future entry credits its real creator, with approval.',
         actions: '<a class="btn btn-sm btn-sun" href="/collaborate/">Submit your project</a><a class="btn btn-sm btn-ghost" href="/hubs/">Find your hub</a>',
@@ -298,7 +258,7 @@ const ICONS = {
         <div class="ledger-side">${hubTag(w.hub)}${w.sample ? '<span class="sample-flag">sample</span>' : ''}</div>
       </li>`).join('');
     return `<div class="ledger-group">
-      <header><h3>${col.title}</h3><span class="status ${col.cls}"><span class="pulse"></span>${list.length}</span></header>
+      <header><h3>${col.title}</h3><span class="status ${col.cls}"><span class="dot"></span>${list.length}</span></header>
       ${rows ? `<ul class="ledger">${rows}</ul>` : `<p class="standfirst" style="margin-top:.4rem">${col.empty}</p>`}
     </div>`;
   }).join('');
@@ -393,7 +353,7 @@ const ICONS = {
         <h3 class="h3">Thanks, proposal received${demo ? ' (demo)' : ''}!</h3>
         <p style="color:var(--ink-soft);max-width:52ch">${
           demo
-            ? 'This is a <strong>demonstration</strong> — nothing was sent anywhere. Once the team connects a form service (see <code>src/js/config.js</code>), submissions here will be delivered for real.'
+            ? 'This is a <strong>demonstration</strong> — nothing was sent anywhere. Once the team connects a form service, submissions here will be delivered for real.'
             : 'Your proposal is on its way. We reply to every genuine proposal — usually within a week.'}
         </p>
         <div class="invite-row"><a class="btn btn-sm btn-ghost" href="/hubs/">Explore the hubs meanwhile</a></div>
