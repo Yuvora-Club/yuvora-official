@@ -520,9 +520,6 @@
 .site-footer h3 { font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--night-faint); margin-bottom: 0.9rem; font-family: var(--font-body); font-weight: 700; }
 /* Legacy tinted bands resolve to paper + hairlines */
 .band-sun, .band-mint, .band-blue, .band-paper { background: var(--paper); border-block: 1px solid var(--line-strong); }
-/* Legacy eyebrow labels render as small caps */
-.eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1rem; }
-.eyebrow::before { content: ""; width: 1.6rem; height: 0.5rem; background: var(--eyebrow-color, var(--blue-deep)); border-radius: var(--radius); }
 /* Sharp hairline info panel (legacy .card) */
 .card { background: var(--card); border: 1px solid var(--line-strong); border-radius: var(--radius); box-shadow: var(--shadow-hard-sm); }
 .card-pad { padding: clamp(1.4rem, 3vw, 2.2rem); }

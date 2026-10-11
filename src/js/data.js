@@ -20,7 +20,6 @@ export const HUBS = [
       'For people who love making things with technology — coding, robotics, design, and everything in between. Bring curiosity; leave with something you built.',
     color: '#3284FF',
     tint: '#E3EDFF',
-    sticker: 'hello, world!',
     activities: ['Coding sessions & build nights', 'Robotics & electronics tinkering', 'Design & creative tools', 'Show-and-tell demos'],
   },
   {
@@ -31,7 +30,6 @@ export const HUBS = [
       'For people who love the game — casual play, friendly matches, training together and learning through sport. All levels genuinely welcome.',
     color: '#26C878',
     tint: '#DFF5E9',
-    sticker: 'game on!',
     activities: ['Casual play & practice sessions', 'Friendly inter-hub matches', 'Fitness & skill-building', 'Team spirit, zero pressure'],
   },
   {
@@ -42,7 +40,6 @@ export const HUBS = [
       'For players and fans — squad up for casual game nights, community tournaments and everything competitive, minus the toxicity.',
     color: '#8A55EF',
     tint: '#EAE2FD',
-    sticker: 'gg, squad!',
     activities: ['Community game nights', 'Friendly tournaments', 'Watch parties & co-streams', 'New-player welcome lobbies'],
   },
   {
@@ -53,7 +50,6 @@ export const HUBS = [
       'Music, art, writing, entrepreneurship, science — whatever the community dreams up next. New hubs start here, proposed by members.',
     color: '#FF9148',
     tint: '#FFEADB',
-    sticker: 'your idea here?',
     activities: ['Member-proposed interests', 'Pilot sessions & pop-ups', 'Cross-hub collaborations', 'Vote on what launches next'],
   },
 ];
