@@ -109,6 +109,43 @@
   .site-header.menu-open .nav-cta .btn { width: 100%; }
 }
 
+/* ---------- Recognition strip (official affiliation showcase) ---------- */
+.recognition { background: var(--navy); color: var(--bg); }
+.recognition-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem 1.4rem;
+  flex-wrap: wrap;
+  padding-block: 0.85rem;
+}
+.rec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--amber);
+  border-radius: var(--radius-pill);
+  padding: 0.32rem 0.85rem;
+  white-space: nowrap;
+}
+.rec-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--navy); }
+.recognition-row p { font-size: 0.95rem; color: var(--night-soft); flex: 1 1 16rem; }
+.recognition-row p strong { color: var(--bg); }
+.recognition-row a {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--amber);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.recognition-row a:hover { border-color: var(--amber); }
+
 /* ---------- Labels ---------- */
 .tag {
   display: inline-flex;

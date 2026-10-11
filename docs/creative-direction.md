@@ -50,5 +50,7 @@ navy community + join bands, pine→navy footer.
   templates need JS rendering unavailable here. The NEXUS reference
   mentioned in the brief was never attached — direction built from its
   written spec (palette, fonts, hero, rhythm) applied to real Yuvora
-  content. Nothing copied; no Hack Club affiliation claimed (repo
-  marks it unconfirmed).
+  content. Nothing copied. Hack Club affiliation is owner-confirmed
+  (official club; programs run under Hack Club) and recorded in
+  `src/js/config.js` — shown as a slim recognition strip only, no
+  borrowed branding.

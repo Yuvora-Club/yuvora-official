@@ -50,7 +50,9 @@ export const SITE = {
   },
   formEndpoint: '', // TODO(owner): paste form-receiver URL to go live.
   affiliations: [
-    // { name: 'Hack Club', approved: false, note: 'Recognition appears here once affiliation is confirmed.' },
+    // REAL (owner-confirmed): Hack Club officially recognised Yuvora
+    // as a club; all Yuvora programs run under Hack Club.
+    { name: 'Hack Club', approved: true, url: 'https://hackclub.com', note: 'All Yuvora programs run under Hack Club.' },
   ],
 };
 
