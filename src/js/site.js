@@ -268,10 +268,9 @@ const ICONS = {
 (function renderTeam() {
   const grid = $('[data-render="team"]');
   if (!grid) return;
-  const tints = ['#E3EDFF', '#DFF5E9', '#EAE2FD', '#FFEADB', '#FFF3D6'];
-  grid.innerHTML = teamRoles.map((m, i) => `
+  grid.innerHTML = teamRoles.map((m) => `
     <div class="member-card reveal">
-      <div class="member-avatar" style="--avatar-bg:${tints[i % tints.length]}" aria-hidden="true">?</div>
+      <div class="member-avatar" aria-hidden="true">?</div>
       <p class="role">${esc(m.role)}</p>
       <h3>Profile coming soon</h3>
       <p class="bio">${esc(m.note)} Real names and photos appear only with approval.</p>

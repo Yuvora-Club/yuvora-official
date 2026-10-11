@@ -6,7 +6,7 @@
   <title>Yuvora — Find your people. Make your thing.</title>
   <meta name="description" content="Yuvora is an independent student community for people who love exploring, creating, competing and bringing ideas to life. Different interests. Same energy." />
   <link rel="canonical" href="https://yuvora.org/" />
-  <meta name="theme-color" content="#F7F3EA" />
+  <meta name="theme-color" content="#F8FAFC" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Yuvora" />
   <meta property="og:title" content="Yuvora — Find your people. Make your thing." />
@@ -16,7 +16,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/src/css/base.css" />
   <link rel="stylesheet" href="/src/css/components.css" />
   <link rel="stylesheet" href="/src/css/home.css" />
@@ -27,9 +27,9 @@
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <header class="site-header" id="siteHeader">
-    <div class="container nav-bar">
+    <div class="nav-bar">
       <a class="brand" href="/" aria-label="Yuvora home">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#3284FF"/><circle cx="49" cy="15" r="7.5" fill="#FFCA36" stroke="#FAF9F5" stroke-width="3"/></svg>
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#4F46E5"/><circle cx="49" cy="15" r="7.5" fill="#F59E0B" stroke="#FFFFFF" stroke-width="3"/></svg>
         <span>yuvora</span>
       </a>
       <nav aria-label="Primary">
@@ -49,238 +49,223 @@
   </header>
 
   <main id="main">
-    <!-- ============ ORIENTATION ============ -->
+    <!-- ============ HERO ============ -->
     <section class="hero" aria-labelledby="heroTitle">
-      <div class="container hero-split">
+      <div class="dots" aria-hidden="true"></div>
+      <span class="orb orb-a" aria-hidden="true"></span>
+      <span class="orb orb-b" aria-hidden="true"></span>
+      <span class="orb orb-c" aria-hidden="true"></span>
+      <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="kicker"><span class="coord">Yuvora</span> An independent student community</p>
-          <h1 class="hero-title" id="heroTitle">Find your <span class="sig">people.</span><br />Make your thing.</h1>
-          <p class="hero-sub">Yuvora is an independent student community for people who love exploring, creating, competing and bringing ideas to life.</p>
+          <p class="announce"><span class="ping">NEW</span> A student-led creative technology community</p>
+          <h1 class="hero-title" id="heroTitle">Ideas are cool. <span class="grad">Building them is better.</span></h1>
+          <p class="hero-sub">Yuvora is where students find their people and make their thing — coding, AI, robotics, sport, gaming, and whatever you dream up next. No experience needed. Just curiosity.</p>
           <div class="hero-actions">
             <a class="btn btn-signal" href="/collaborate/#join">Join Yuvora <span aria-hidden="true">→</span></a>
-            <a class="btn btn-ghost" href="/hubs/">Explore the hubs</a>
+            <a class="btn btn-ghost" href="/projects/">Explore What We Build</a>
+          </div>
+          <div class="hero-proof">
+            <a class="proof-chip" href="/hubs/tech/"><i style="--c:#4F46E5" aria-hidden="true"></i>Tech Hub</a>
+            <a class="proof-chip" href="/hubs/sporting/"><i style="--c:#14B8A6" aria-hidden="true"></i>Sporting Hub</a>
+            <a class="proof-chip" href="/hubs/esports/"><i style="--c:#8A55EF" aria-hidden="true"></i>Esports &amp; Gaming</a>
           </div>
         </div>
-        <ul class="terrain-index" aria-label="Terrains">
-          <li><a href="/hubs/tech/"><span class="t-chip" style="--c:#3284FF" aria-hidden="true"></span><span class="t-name">Tech terrain<small>Build · Code · Create</small></span><span class="t-coord">N 01</span></a></li>
-          <li><a href="/hubs/sporting/"><span class="t-chip" style="--c:#26C878" aria-hidden="true"></span><span class="t-name">Sport terrain<small>Play · Compete · Grow</small></span><span class="t-coord">N 02</span></a></li>
-          <li><a href="/hubs/esports/"><span class="t-chip" style="--c:#8A55EF" aria-hidden="true"></span><span class="t-name">Play terrain<small>Game · Connect · Compete</small></span><span class="t-coord">N 03</span></a></li>
-          <li><a href="/hubs/future/"><span class="t-chip" style="--c:#FF9148" aria-hidden="true"></span><span class="t-name">Unmapped country<small>More interests · More possibilities</small></span><span class="t-coord">N 04</span></a></li>
-        </ul>
+        <div class="hero-visual">
+          <div class="codewin" role="img" aria-label="Illustration of a code editor showing a Yuvora welcome program">
+            <div class="codewin-bar" aria-hidden="true"><i></i><i></i><i></i><span>yuvora — hello.js</span></div>
+            <pre aria-hidden="true"><code><span class="c">// welcome to the clubhouse</span>
+<span class="k">import</span> { curiosity } <span class="k">from</span> <span class="s">"you"</span>;
+
+<span class="k">const</span> <span class="f">yuvora</span> = <span class="k">await</span> Community.<span class="f">open</span>({
+  interests: [<span class="s">"tech"</span>, <span class="s">"sport"</span>, <span class="s">"play"</span>],
+  experience: <span class="s">"none needed"</span>,
+});
+
+yuvora.<span class="f">build</span>(curiosity); <span class="c">// ← your thing goes here</span></code></pre>
+          </div>
+          <a class="float-chip fc-1" href="/hubs/tech/"><i style="--c:#4F46E5" aria-hidden="true">&lt;/&gt;</i>build nights</a>
+          <a class="float-chip fc-2" href="/hubs/esports/"><i style="--c:#8A55EF" aria-hidden="true">▶</i>game nights</a>
+          <a class="float-chip fc-3" href="/hubs/sporting/"><i style="--c:#14B8A6" aria-hidden="true">✦</i>match days</a>
+        </div>
       </div>
-      <!-- PLACEHOLDER: original graphic panorama — a composed illustration of the
-           terrains, not a photograph of real places, members, or events. -->
-      <figure class="panorama reveal" aria-label="Illustrated panorama of Yuvora's terrains">
-        <svg viewBox="0 0 1200 420" role="img" aria-label="Stylised map: contour hills, striped sports fields and an arcade grid under one sun">
-          <rect x="0" y="0" width="1200" height="420" fill="#ECE5D2"/>
-          <rect x="0" y="40" width="420" height="320" fill="#E0EAFB" opacity="0.6"/>
-          <rect x="420" y="40" width="380" height="320" fill="#DCEFE2" opacity="0.6"/>
-          <rect x="800" y="40" width="400" height="320" fill="#E7DFFA" opacity="0.6"/>
-          <line x1="420" y1="40" x2="420" y2="360" stroke="#16211C" stroke-width="2" stroke-dasharray="2 8" opacity="0.5"/>
-          <line x1="800" y1="40" x2="800" y2="360" stroke="#16211C" stroke-width="2" stroke-dasharray="2 8" opacity="0.5"/>
-          <g fill="none" stroke="#1F5FD6" stroke-width="2.5">
-            <path d="M70,220 C70,150 140,110 210,120 C280,130 340,180 330,250 C320,320 240,360 170,345 C100,330 70,290 70,220 Z"/>
-            <path d="M105,222 C105,170 160,140 212,148 C264,156 300,196 292,248 C284,300 224,326 172,314 C120,302 105,274 105,222 Z"/>
-            <path d="M140,224 C140,188 178,166 214,172 C250,178 274,206 268,242 C262,278 220,296 184,286 C148,276 140,260 140,224 Z"/>
-          </g>
-          <circle cx="212" cy="228" r="10" fill="#1F5FD6" stroke="#16211C" stroke-width="2.5"/>
-          <path d="M212,196 v-22 M212,260 v22 M180,228 h-22 M244,228 h22" stroke="#16211C" stroke-width="2.5"/>
-          <g fill="#FFFDF7" opacity="0.55">
-            <path d="M440,360 L480,40 L510,40 L470,360 Z"/>
-            <path d="M520,360 L560,40 L590,40 L550,360 Z"/>
-            <path d="M600,360 L640,40 L670,40 L630,360 Z"/>
-            <path d="M680,360 L720,40 L750,40 L710,360 Z"/>
-          </g>
-          <ellipse cx="615" cy="215" rx="140" ry="78" fill="none" stroke="#16211C" stroke-width="3"/>
-          <ellipse cx="615" cy="215" rx="116" ry="58" fill="none" stroke="#26C878" stroke-width="8"/>
-          <circle cx="755" cy="215" r="7" fill="#FF5A3C" stroke="#16211C" stroke-width="2"/>
-          <g stroke="#6A3ECF" stroke-width="2">
-            <line x1="820" y1="360" x2="1005" y2="130"/>
-            <line x1="880" y1="360" x2="1005" y2="130"/>
-            <line x1="940" y1="360" x2="1005" y2="130"/>
-            <line x1="1000" y1="360" x2="1005" y2="130"/>
-            <line x1="1060" y1="360" x2="1005" y2="130"/>
-            <line x1="1120" y1="360" x2="1005" y2="130"/>
-            <line x1="1180" y1="360" x2="1005" y2="130"/>
-          </g>
-          <line x1="800" y1="130" x2="1200" y2="130" stroke="#16211C" stroke-width="2"/>
-          <line x1="800" y1="210" x2="1200" y2="210" stroke="#6A3ECF" stroke-width="2" opacity="0.5"/>
-          <line x1="800" y1="280" x2="1200" y2="280" stroke="#6A3ECF" stroke-width="2" opacity="0.5"/>
-          <circle cx="1005" cy="72" r="24" fill="#FF5A3C" stroke="#16211C" stroke-width="2.5"/>
-          <rect x="1090" y="240" width="16" height="16" fill="#16211C"/>
-          <rect x="1114" y="240" width="16" height="16" fill="none" stroke="#16211C" stroke-width="2.5"/>
-          <line x1="0" y1="360" x2="1200" y2="360" stroke="#16211C" stroke-width="2"/>
-          <g font-family="Sora, 'Segoe UI', sans-serif" font-weight="700" font-size="17" fill="#16211C" opacity="0.62" letter-spacing="2">
-            <text x="40" y="396">N·01 CONTOURS</text>
-            <text x="460" y="396">N·02 STRIPES</text>
-            <text x="840" y="396">N·03 GRID</text>
-          </g>
-        </svg>
-        <figcaption>The terrain so far — contours, stripes and grid, plus unmapped country.</figcaption>
-      </figure>
     </section>
 
-    <!-- ============ THE TERRAINS ============ -->
+    <!-- ============ WHAT IS YUVORA ============ -->
+    <section class="section" aria-labelledby="whatTitle" style="padding-top:0">
+      <div class="container split">
+        <div class="split-copy reveal">
+          <p class="kicker"><span class="coord">01</span> What is Yuvora?</p>
+          <h2 class="h2" id="whatTitle">Not a club you join. A crew you build with.</h2>
+          <p class="lead" style="margin-top:1rem">Yuvora is an independent student community for people who love exploring, creating, competing and bringing ideas to life. Different interests. Same energy — whether your thing is code, sport, games, or something nobody has named yet.</p>
+          <div class="hero-actions">
+            <a class="u-link" href="/team/">Meet the community <span class="arr">→</span></a>
+          </div>
+        </div>
+        <div class="split-visual reveal" data-delay="1">
+          <div class="about-visual" role="img" aria-label="Illustration of the different things members do together">
+            <div class="dots" aria-hidden="true"></div>
+            <div class="about-lines">
+              <span class="about-line"><i style="--c:#F59E0B" aria-hidden="true">◈</i>Builders ship first websites</span>
+              <span class="about-line"><i style="--c:#14B8A6" aria-hidden="true">✦</i>Players own the field</span>
+              <span class="about-line"><i style="--c:#FF5432" aria-hidden="true">▶</i>Gamers run the lobby</span>
+              <span class="about-line"><i style="--c:#A5B4FC" aria-hidden="true">?</i>Dreamers map what's next</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPLORE ============ -->
     <section class="section" id="hubs" aria-labelledby="hubsTitle" style="padding-top:0">
       <div class="container">
         <div class="section-head reveal">
-          <p class="kicker rule-after"><span class="coord">N 01</span> The terrains</p>
+          <p class="kicker"><span class="coord">02</span> What you can explore</p>
           <div class="head-row">
-            <h2 class="h2" id="hubsTitle">Four regions.<br />One country.</h2>
+            <h2 class="h2" id="hubsTitle">Pick a lane. <span class="grad">Switch anytime.</span></h2>
             <a class="u-link" href="/hubs/">Full directory <span class="arr">→</span></a>
           </div>
-          <p class="standfirst">Interest-based homes with their own ground underfoot. Join one, join three — regulars and first-timers get the same welcome.</p>
+          <p class="standfirst">Four terrains, one community. Every hub is a different way to find your people — regulars and first-timers get the same welcome.</p>
         </div>
-
-        <article class="plate reveal" style="--hub:#3284FF;--hub-tint:#E0EAFB;--hub-ink:#1F5FD6">
-          <figure class="plate-art">
-            <svg viewBox="0 0 640 400" role="img" aria-label="Contour survey illustration for the Tech terrain">
-              <rect x="0" y="0" width="640" height="400" fill="#E0EAFB"/>
-              <g fill="none" stroke="#1F5FD6" stroke-width="3">
-                <path d="M70,210 C70,120 170,60 300,70 C430,80 560,150 550,240 C540,330 400,380 270,365 C140,350 70,300 70,210 Z"/>
-                <path d="M120,212 C120,142 200,96 300,104 C400,112 492,168 484,242 C476,316 368,352 268,340 C168,328 120,282 120,212 Z"/>
-                <path d="M175,214 C175,162 236,126 304,132 C372,138 436,180 430,238 C424,296 344,322 272,312 C200,302 175,266 175,214 Z"/>
-                <path d="M235,216 C235,184 270,162 306,166 C342,170 370,194 366,228 C362,262 318,278 280,270 C242,262 235,248 235,216 Z"/>
-              </g>
-              <circle cx="302" cy="218" r="12" fill="#FF5A3C" stroke="#16211C" stroke-width="3"/>
-              <path d="M302,160 v-30 M302,276 v30 M244,218 h-30 M360,218 h30" stroke="#16211C" stroke-width="3"/>
-              <text x="28" y="52" font-family="Sora, 'Segoe UI', sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#16211C">N 01 — CONTOUR SURVEY</text>
-            </svg>
-            <figcaption>Fig. 01 — Contour survey, Tech terrain</figcaption>
-          </figure>
-          <div class="plate-body">
-            <h3 class="plate-name">Tech Hub</h3>
-            <span class="plate-tag">Build · Code · Create</span>
-            <p class="plate-desc">Coding, robotics, design and tinkering — from first-timers to seasoned builders.</p>
-            <p class="plate-enter"><a class="u-link" href="/hubs/tech/">Enter the terrain <span class="arr">→</span></a></p>
-          </div>
-        </article>
-
-        <article class="plate flip reveal" style="--hub:#26C878;--hub-tint:#DCEFE2;--hub-ink:#1E7A4E">
-          <figure class="plate-art">
-            <svg viewBox="0 0 640 400" role="img" aria-label="Striped field illustration for the Sport terrain">
-              <rect x="0" y="0" width="640" height="400" fill="#DCEFE2"/>
-              <g fill="#FFFDF7" opacity="0.6">
-                <rect x="0" y="40" width="640" height="44"/>
-                <rect x="0" y="128" width="640" height="44"/>
-                <rect x="0" y="216" width="640" height="44"/>
-                <rect x="0" y="304" width="640" height="44"/>
-              </g>
-              <path d="M40,340 A300,300 0 0 1 600,340" fill="none" stroke="#16211C" stroke-width="4"/>
-              <path d="M80,340 A260,260 0 0 1 560,340" fill="none" stroke="#26C878" stroke-width="10"/>
-              <circle cx="320" cy="330" r="12" fill="#FF5A3C" stroke="#16211C" stroke-width="3"/>
-              <text x="28" y="52" font-family="Sora, 'Segoe UI', sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#16211C">N 02 — FIELD LINES</text>
-            </svg>
-            <figcaption>Fig. 02 — Field lines, Sport terrain</figcaption>
-          </figure>
-          <div class="plate-body">
-            <h3 class="plate-name">Sporting Hub</h3>
-            <span class="plate-tag">Play · Compete · Grow</span>
-            <p class="plate-desc">Casual play, friendly matches and training together. All levels, genuinely.</p>
-            <p class="plate-enter"><a class="u-link" href="/hubs/sporting/">Enter the terrain <span class="arr">→</span></a></p>
-          </div>
-        </article>
-
-        <article class="plate reveal" style="--hub:#8A55EF;--hub-tint:#E7DFFA;--hub-ink:#6A3ECF">
-          <figure class="plate-art">
-            <svg viewBox="0 0 640 400" role="img" aria-label="Perspective grid illustration for the Play terrain">
-              <rect x="0" y="0" width="640" height="400" fill="#E7DFFA"/>
-              <g stroke="#6A3ECF" stroke-width="3">
-                <line x1="20" y1="400" x2="320" y2="130"/>
-                <line x1="140" y1="400" x2="320" y2="130"/>
-                <line x1="260" y1="400" x2="320" y2="130"/>
-                <line x1="380" y1="400" x2="320" y2="130"/>
-                <line x1="500" y1="400" x2="320" y2="130"/>
-                <line x1="620" y1="400" x2="320" y2="130"/>
-              </g>
-              <line x1="0" y1="130" x2="640" y2="130" stroke="#16211C" stroke-width="3"/>
-              <line x1="0" y1="220" x2="640" y2="220" stroke="#6A3ECF" stroke-width="2.5" opacity="0.6"/>
-              <line x1="0" y1="300" x2="640" y2="300" stroke="#6A3ECF" stroke-width="2.5" opacity="0.6"/>
-              <rect x="296" y="56" width="48" height="48" fill="#FF5A3C" stroke="#16211C" stroke-width="3"/>
-              <text x="28" y="52" font-family="Sora, 'Segoe UI', sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#16211C">N 03 — ARCADE GRID</text>
-            </svg>
-            <figcaption>Fig. 03 — Arcade grid, Play terrain</figcaption>
-          </figure>
-          <div class="plate-body">
-            <h3 class="plate-name">Esports &amp; Gaming</h3>
-            <span class="plate-tag">Game · Connect · Compete</span>
-            <p class="plate-desc">Game nights and community tournaments — competitive, minus the toxicity.</p>
-            <p class="plate-enter"><a class="u-link" href="/hubs/esports/">Enter the terrain <span class="arr">→</span></a></p>
-          </div>
-        </article>
-
-        <article class="plate flip reveal" style="--hub:#FF9148;--hub-tint:#FBE3D2;--hub-ink:#A85A1C">
-          <figure class="plate-art">
-            <svg viewBox="0 0 640 400" role="img" aria-label="Dotted unmapped expanse with an expedition path">
-              <defs>
-                <pattern id="futDots" width="26" height="26" patternUnits="userSpaceOnUse">
-                  <circle cx="4" cy="4" r="2.2" fill="#16211C" opacity="0.35"/>
-                </pattern>
-                <marker id="futHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                  <path d="M0,0 L10,5 L0,10 z" fill="#16211C"/>
-                </marker>
-              </defs>
-              <rect x="0" y="0" width="640" height="400" fill="#FBE3D2"/>
-              <rect x="0" y="0" width="640" height="400" fill="url(#futDots)"/>
-              <path d="M50,340 C190,320 220,200 340,195 C460,190 500,120 585,80" fill="none" stroke="#16211C" stroke-width="3" stroke-dasharray="10 9" marker-end="url(#futHead)"/>
-              <circle cx="585" cy="80" r="14" fill="#FF5A3C" stroke="#16211C" stroke-width="3"/>
-              <text x="28" y="52" font-family="Sora, 'Segoe UI', sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#16211C">N 04 — UNMAPPED</text>
-              <text x="440" y="120" font-family="Sora, 'Segoe UI', sans-serif" font-weight="700" font-size="19" letter-spacing="2" fill="#A85A1C">YOU ARE HERE →</text>
-            </svg>
-            <figcaption>Fig. 04 — Unmapped country, proposed by members</figcaption>
-          </figure>
-          <div class="plate-body">
-            <h3 class="plate-name">Future Hubs</h3>
-            <span class="plate-tag">More interests · More possibilities</span>
-            <p class="plate-desc">Music, art, writing, ventures — new hubs start here, proposed by members.</p>
-            <p class="plate-enter"><a class="u-link" href="/hubs/future/">Enter the terrain <span class="arr">→</span></a></p>
-          </div>
-        </article>
+        <nav class="tiles reveal" aria-label="Hubs" data-delay="1">
+          <a class="tile tile-a" href="/hubs/tech/" style="--hub-ink:#1F5FD6">
+            <span class="tile-art" aria-hidden="true">
+              <svg viewBox="0 0 560 260"><rect width="560" height="260" fill="#1E1B4B"/><g fill="none" stroke="#4F46E5" stroke-width="3"><path d="M60,190 C60,120 140,70 230,80 C320,90 400,150 390,210 C380,260 280,290 200,275 C120,260 60,240 60,190 Z"/><path d="M110,192 C110,142 170,108 240,114 C310,120 366,160 360,208 C354,256 280,276 220,266 C160,256 110,236 110,192 Z"/></g><circle cx="238" cy="190" r="12" fill="#FF5432"/><rect x="380" y="60" width="120" height="34" rx="17" fill="#F59E0B"/><text x="396" y="83" font-family="monospace" font-size="16" fill="#0F172A">hello()</text><circle cx="120" cy="70" r="6" fill="#14B8A6"/><circle cx="480" cy="200" r="8" fill="none" stroke="#F8FAFC" stroke-width="3"/></svg>
+            </span>
+            <span class="tile-body">
+              <span class="tile-no">HUB — 01</span>
+              <span class="tile-name">Tech Hub</span>
+              <span class="tile-tag">Build · Code · Create</span>
+              <span class="tile-desc">Coding, AI, robotics, design and tinkering — from your first webpage to full builds, with mentors beside you.</span>
+              <span class="tile-go">Start building <span class="arr">→</span></span>
+            </span>
+          </a>
+          <a class="tile tile-b" href="/hubs/sporting/" style="--hub-ink:#0F766E">
+            <span class="tile-art" aria-hidden="true">
+              <svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#0E3B3B"/><g fill="#F8FAFC" opacity="0.14"><rect x="0" y="30" width="400" height="34"/><rect x="0" y="110" width="400" height="34"/><rect x="0" y="190" width="400" height="34"/></g><ellipse cx="200" cy="150" rx="120" ry="80" fill="none" stroke="#14B8A6" stroke-width="6"/><ellipse cx="200" cy="150" rx="88" ry="56" fill="none" stroke="#F8FAFC" stroke-width="3"/><circle cx="200" cy="150" r="10" fill="#F59E0B"/></svg>
+            </span>
+            <span class="tile-body">
+              <span class="tile-no">HUB — 02</span>
+              <span class="tile-name">Sporting Hub</span>
+              <span class="tile-tag">Play · Compete · Grow</span>
+              <span class="tile-desc">Casual play, friendly matches, training together. All levels, genuinely.</span>
+              <span class="tile-go">Get playing <span class="arr">→</span></span>
+            </span>
+          </a>
+          <a class="tile tile-c" href="/hubs/esports/" style="--hub-ink:#6A3ECF">
+            <span class="tile-art" aria-hidden="true">
+              <svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#2B2565"/><g stroke="#8A55EF" stroke-width="3"><line x1="40" y1="300" x2="200" y2="90"/><line x1="140" y1="300" x2="200" y2="90"/><line x1="260" y1="300" x2="200" y2="90"/><line x1="360" y1="300" x2="200" y2="90"/></g><line x1="0" y1="90" x2="400" y2="90" stroke="#F8FAFC" stroke-width="3"/><rect x="176" y="30" width="48" height="48" fill="#FF5432"/><circle cx="320" cy="220" r="12" fill="none" stroke="#F59E0B" stroke-width="4"/></svg>
+            </span>
+            <span class="tile-body">
+              <span class="tile-no">HUB — 03</span>
+              <span class="tile-name">Esports &amp; Gaming</span>
+              <span class="tile-tag">Game · Connect · Compete</span>
+              <span class="tile-desc">Game nights and community tournaments — competitive, minus the toxicity.</span>
+              <span class="tile-go">Squad up <span class="arr">→</span></span>
+            </span>
+          </a>
+          <a class="tile tile-d" href="/hubs/future/" style="--hub-ink:#A85A1C">
+            <span class="tile-art" aria-hidden="true">
+              <svg viewBox="0 0 560 240"><rect width="560" height="240" fill="#3B2A10"/><g fill="#F8FAFC" opacity="0.3"><circle cx="40" cy="40" r="3"/><circle cx="90" cy="40" r="3"/><circle cx="140" cy="40" r="3"/><circle cx="190" cy="40" r="3"/><circle cx="240" cy="40" r="3"/><circle cx="290" cy="40" r="3"/><circle cx="340" cy="40" r="3"/><circle cx="390" cy="40" r="3"/><circle cx="40" cy="90" r="3"/><circle cx="90" cy="90" r="3"/><circle cx="140" cy="90" r="3"/><circle cx="190" cy="90" r="3"/><circle cx="240" cy="90" r="3"/><circle cx="290" cy="90" r="3"/><circle cx="40" cy="140" r="3"/><circle cx="90" cy="140" r="3"/><circle cx="140" cy="140" r="3"/></g><path d="M60,200 C180,190 220,120 340,110 C420,104 460,70 510,50" fill="none" stroke="#F8FAFC" stroke-width="3" stroke-dasharray="10 9"/><circle cx="510" cy="50" r="12" fill="#F59E0B" stroke="#0F172A" stroke-width="3"/><text x="330" y="200" font-family="monospace" font-size="17" letter-spacing="2" fill="#F59E0B">YOUR IDEA →</text></svg>
+            </span>
+            <span class="tile-body">
+              <span class="tile-no">HUB — 04</span>
+              <span class="tile-name">Future Hubs</span>
+              <span class="tile-tag">More interests · More possibilities</span>
+              <span class="tile-desc">Music, art, writing, ventures — into something else entirely? Propose it and pilot the first session with friends.</span>
+              <span class="tile-go">Map what's next <span class="arr">→</span></span>
+            </span>
+          </a>
+        </nav>
       </div>
     </section>
 
-    <!-- ============ FIELD LOG ============ -->
-    <section class="section" aria-label="Field log: making and happening" style="padding-top:0">
-      <div class="container log-grid">
-        <div class="log-head reveal">
-          <p class="kicker"><span class="coord">N 02</span> Field log</p>
-          <h2 class="h2">Real work, logged.</h2>
-          <p>What the community makes and when it gathers — recorded here, nothing invented.</p>
-        </div>
-        <div class="log-slots">
-          <div class="reveal" data-render="projects" data-limit="2">
-            <noscript><p>Project listings need JavaScript. <a href="/projects/">Visit the projects page</a>.</p></noscript>
+    <!-- ============ BUILD SPOTLIGHT ============ -->
+    <section class="section" id="showcase" aria-labelledby="showcaseTitle" style="padding-top:0">
+      <div class="container">
+        <div class="spotlight reveal">
+          <span class="orb orb-s1" aria-hidden="true"></span>
+          <span class="orb orb-s2" aria-hidden="true"></span>
+          <div class="spotlight-grid">
+            <div>
+              <p class="kicker warm"><span class="coord">03</span> Build &amp; create</p>
+              <h2 class="h2" id="showcaseTitle">Small builds. Big energy.</h2>
+              <p>This is the shelf where member work lives — websites, matches won, games shipped, things made at 1am. Nothing here is fabricated: every future entry credits its real creator, with approval.</p>
+              <div class="hero-actions">
+                <a class="btn btn-light" href="/projects/">See the shelf <span aria-hidden="true">→</span></a>
+                <a class="btn btn-outline-light" href="/collaborate/">Submit your thing</a>
+              </div>
+            </div>
+            <div class="spot-mini" aria-hidden="true"><span class="c"># shelf status</span><br /><span class="k">shelf</span> = [] <span class="c"># empty — for now</span><br /><span class="k">shelf</span>.<span class="f">append</span>(<span class="s">your_project</span>)</div>
           </div>
-          <div class="reveal" data-delay="1" data-render="events-preview">
-            <noscript><p>Event listings need JavaScript. <a href="/events/">Visit the events page</a>.</p></noscript>
+        </div>
+        <div style="margin-top:1.5rem" data-render="projects" data-limit="2">
+          <noscript><p>Project listings need JavaScript. <a href="/projects/">Visit the projects page</a>.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMMUNITY ============ -->
+    <section class="section band-navy" aria-labelledby="crewTitle" style="padding-top:0">
+      <span class="orb orb-n1" aria-hidden="true"></span>
+      <span class="orb orb-n2" aria-hidden="true"></span>
+      <div class="container split" style="position:relative">
+        <div class="split-copy reveal">
+          <p class="kicker"><span class="coord">04</span> Community</p>
+          <h2 class="h2" id="crewTitle">Run by students. No filler people.</h2>
+          <p class="lead" style="margin-top:1rem">Real members appear here only with their approval — no invented names, no stock-photo teammates. The founding crew is assembling now, and there is room in it for you.</p>
+          <div class="hero-actions">
+            <a class="btn btn-light" href="/team/">See open roles <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="split-visual reveal" data-delay="1">
+          <div class="about-visual" role="img" aria-label="Illustration of crew roles waiting to be filled">
+            <div class="about-lines">
+              <span class="about-line"><i style="--c:#F59E0B" aria-hidden="true">★</i>Community Lead — you?</span>
+              <span class="about-line"><i style="--c:#14B8A6" aria-hidden="true">✦</i>Hub organisers — you?</span>
+              <span class="about-line"><i style="--c:#FF5432" aria-hidden="true">▶</i>Events &amp; outreach — you?</span>
+              <span class="about-line"><i style="--c:#A5B4FC" aria-hidden="true">+</i>Volunteers — you?</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ ROUTE IN ============ -->
-    <section class="section" aria-labelledby="joinTitle" style="padding-top:0">
-      <div class="container" style="max-width:56rem">
-        <p class="kicker rule-after reveal"><span class="coord">N 03</span> Route in</p>
-        <h2 class="h2 reveal" id="joinTitle" style="max-width:18ch">Three steps to the room.</h2>
-        <ol class="route-steps reveal" style="margin-top:1.8rem">
-          <li>
-            <span><h3>Walk a terrain</h3><p>Browse the hubs and follow whatever pulls you — tech, sport, gaming, or something entirely new.</p></span>
-            <a class="u-link" href="/hubs/">Explore <span class="arr">→</span></a>
-          </li>
-          <li>
-            <span><h3>Sign the log</h3><p>Send a short proposal through the collaborate form. A human reads every one and replies within a week.</p></span>
-            <a class="u-link" href="/collaborate/#join">Say hello <span class="arr">→</span></a>
-          </li>
-          <li>
-            <span><h3>Show up</h3><p>Sessions are announced on the events page with venues and details. No tryouts, no experience needed.</p></span>
-            <a class="u-link" href="/events/">Events <span class="arr">→</span></a>
-          </li>
-        </ol>
-        <div class="route-cta reveal">
+    <!-- ============ ACTIVITIES ============ -->
+    <section class="section" aria-labelledby="eventsTitle" style="padding-top:0">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker"><span class="coord">05</span> Activities</p>
+          <div class="head-row">
+            <h2 class="h2" id="eventsTitle">Season 01 is <span class="grad">loading…</span></h2>
+            <a class="u-link" href="/events/">How events work <span class="arr">→</span></a>
+          </div>
+          <p class="standfirst">Build nights, match days, game nights, workshops. Dates lock here first — with venues and registration. Nothing is listed until it is real.</p>
+        </div>
+        <div data-render="events-preview">
+          <noscript><p>Event listings need JavaScript. <a href="/events/">Visit the events page</a>.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOIN ============ -->
+    <section class="section band-navy" aria-labelledby="joinTitle" style="padding-top:0">
+      <span class="orb orb-n1" aria-hidden="true"></span>
+      <span class="orb orb-n2" aria-hidden="true"></span>
+      <div class="container join-center reveal">
+        <p class="kicker" style="justify-content:center"><span class="coord">06</span> Join Yuvora</p>
+        <h2 id="joinTitle">Your interests <span class="amber">belong here.</span></h2>
+        <p>Pick a hub, say hello through the proposal form, and show up. No tryouts, no experience needed — just curiosity.</p>
+        <div class="hero-actions">
           <a class="btn btn-signal" href="/collaborate/#join">Join Yuvora <span aria-hidden="true">→</span></a>
-          <span style="font-size:0.92rem;color:var(--ink-soft)" data-contact-email></span>
+          <a class="btn btn-outline-light" href="/hubs/">Explore the hubs</a>
         </div>
+        <nav class="join-routes" aria-label="Quick routes">
+          <a href="/hubs/tech/">Tech</a><span aria-hidden="true">·</span>
+          <a href="/hubs/sporting/">Sporting</a><span aria-hidden="true">·</span>
+          <a href="/hubs/esports/">Esports</a><span aria-hidden="true">·</span>
+          <a href="/events/">Events</a><span aria-hidden="true">·</span>
+          <a href="/collaborate/">Collaborate</a>
+        </nav>
       </div>
     </section>
   </main>
@@ -290,7 +275,7 @@
       <div class="footer-grid">
         <div>
           <a class="footer-brand" href="/" aria-label="Yuvora home">
-            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#FAF9F5"/><circle cx="49" cy="15" r="7.5" fill="#FFCA36"/></svg>
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 C35 22 42 29 60 32 C42 35 35 42 32 60 C29 42 22 35 4 32 C22 29 29 22 32 4 Z" fill="#F8FAFC"/><circle cx="49" cy="15" r="7.5" fill="#F59E0B"/></svg>
             <span>yuvora</span>
           </a>
           <p class="footer-desc">An independent, student-led community for people who love exploring, creating, competing and bringing ideas to life.</p>

@@ -1,47 +1,54 @@
-# Yuvora — Creative Direction: "Terrain" (v5, replaces "The Open Studio")
+# Yuvora — Creative Direction: "Epic Youth" (v6, replaces "Terrain")
 
 ## Concept
-Yuvora is a landscape of interests you can walk into. Each hub is a
-**terrain** rendered as large duotone plates: Tech reads as contour
-topography, Sporting as field stripes and track arcs, Esports as a
-perspective arcade grid, Future as an unmapped dotted expanse with a
-"you are here" marker. The homepage is a walk through these terrains:
-headline and orientation first, then full-width plates, then the ledger
-of real work, then the route in. Bone paper, pine-black ink, one signal
-coral. Sora display + Instrument Sans body. Coordinate kickers
-("N 01 — TECH HUB") instead of badges.
+A premium creative-technology community built by young people:
+indigo/coral/teal/amber on clean ice backgrounds, broken by deep-navy
+atmospheric bands. The hero is a coherent build-window composition —
+real illustrative code, hub chips that link somewhere, ambient static
+orbs — not widgets in a box. Hubs are staggered image-led tiles, each
+with its own duotone art; projects get a dark spotlight; community and
+joining get navy bands with warm light. Outfit display, Plus Jakarta
+Sans body, JetBrains Mono details. Youthful but not childish,
+colorful but not chaotic, technical but never intimidating.
 
 ## Why this direction
-- **Image-rich without fabrication.** The repo holds no photographs,
-  only logo SVGs — and invented photography is forbidden. Original
-  large-scale graphic plates give imagery real compositional work
-  (full-bleed sections, image-led chapters) with zero network risk and
-  a consistent duotone treatment no stock photo could match.
-- **One identity, many interests.** Terrains differ in motif but share
-  line language, duotone discipline and coordinates — so hub five and
-  hub ten slot in as new data, not redesigns.
-- **Memory without intimidation.** A panorama you can read at a glance,
-  moderate type (h1 ≤ 4rem), generous whitespace; confidence comes from
-  composition, not effects. No looping motion, no decoration over text.
-- **Honesty preserved.** Empty states stay visibly labelled ("field
-  log"); every plate is self-evidently graphic, never posed as members
-  or events. Contrast re-verified computationally for the new tokens.
+- **Excitement without fabrication.** The repo holds no photographs and
+  honesty forbids inventing them, so every visual is original inline
+  SVG/CSS composition (code windows, duotone hub art, orbs, dotted
+  grids) — zero network risk, one coherent treatment, clearly
+  illustrative and badged where it previews real layouts.
+- **Participation-first journey.** Hero promise → what it is → four
+  distinct hub destinations → build spotlight with an honest empty
+  shelf → navy community band → honest activities → glowing join
+  finale. Every CTA lands on a real route; the collaborate form stays
+  honestly demo-mode; no stats, testimonials, or schedules invented.
+- **Character within one identity.** Hubs differ in art and accent but
+  share tiles, kickers, type and rhythm — hub five arrives as data,
+  not a redesign. Motion is reveal/hover only; nothing loops.
+- **AA verified.** All 18 text/background pairings computed ≥4.5:1,
+  including coral-with-navy-text CTAs and deep variants for small
+  colored text. Never color-alone: statuses, kickers and flags pair
+  color with words.
 
 ## Preserved
 Vite MPA + vanilla stack, all 12 routes, `config.js`/`data.js` content
-model, all real copy, demo-mode form honesty, nav/footer/a11y/SEO
-patterns, brand mark. Zero new dependencies.
+model (samples flagged, never real), all genuine copy, form honesty,
+nav/footer/a11y/SEO patterns, the logo mark itself. Zero new
+dependencies, no Tailwind (not configured — vanilla CSS retained).
 
 ## Changed
-Open Studio system retired in full (bench labels, tint chips, sketch
-hero, mono stack, Caveat). New tokens, new font pairing, new label and
-empty-state language, plate-based hub presentation on home + hubs +
-hub pages, panorama hero.
+Terrain system retired in full (bone/pine/coral, Sora/Instrument,
+plates, bench language). New tokens, Outfit/Jakarta/Mono pairing,
+floating pill nav, gradient-signal CTAs, tile directory, spotlight,
+navy community + join bands, pine→navy footer.
 
 ## Reference insights (only what actually rendered)
-- **clubs.hackclub.com (inspected):** learn plain visitor-addressed copy,
-  one repeated join action, concrete named programs; reject the
-  maximalist busy hero and single-interest framing.
-- **hackclub.com:** metadata only. **HCB:** sign-in wall. **E-Summit:**
-  nothing usable. **Wix templates:** need JS rendering unavailable here.
-  Nothing copied; the terrain identity is Yuvora's own.
+- **clubs.hackclub.com (inspected):** learn plain visitor copy, one
+  repeated join action, concrete named programs; reject the busy
+  maximalist hero and single-interest framing. HCB never used as a
+  reference. E-Summit/hackclub.com yielded nothing usable; Wix
+  templates need JS rendering unavailable here. The NEXUS reference
+  mentioned in the brief was never attached — direction built from its
+  written spec (palette, fonts, hero, rhythm) applied to real Yuvora
+  content. Nothing copied; no Hack Club affiliation claimed (repo
+  marks it unconfirmed).
