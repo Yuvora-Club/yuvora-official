@@ -466,6 +466,53 @@ function memberLinks(links) {
     }
   }
 
+  /* Ways-in rows drive the form: picking one preselects the matching
+     proposal type, highlights the form, and scrolls to it. The active
+     row stays synced when the select changes directly. */
+  const ways = $$('[data-way]');
+  const syncWays = () => {
+    const v = typeSelect ? typeSelect.value : '';
+    ways.forEach((w) => {
+      const on = !!v && w.dataset.way === v;
+      w.classList.toggle('active', on);
+      w.setAttribute('aria-pressed', String(on));
+    });
+  };
+  ways.forEach((w) => w.addEventListener('click', () => {
+    if (typeSelect) {
+      typeSelect.value = w.dataset.way;
+      const tf = $('[data-field="type"]');
+      if (tf) { tf.classList.remove('invalid'); }
+      syncWays();
+    }
+    const card = $('#join');
+    if (card) {
+      card.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
+      card.classList.remove('flash');
+      void card.offsetWidth;
+      card.classList.add('flash');
+    }
+  }));
+  if (typeSelect) {
+    typeSelect.addEventListener('change', syncWays);
+    syncWays();
+  }
+
+  /* Live proposal-length counter (visual only; validation errors
+     remain the announced source of truth for assistive tech). */
+  const msgInput = $('#fieldMessage');
+  const msgCount = $('#msgCount');
+  const updateCount = () => {
+    if (!msgInput || !msgCount) return;
+    const n = msgInput.value.trim().length;
+    msgCount.textContent = `${n} / 20 minimum`;
+    msgCount.classList.toggle('ok', n >= 20);
+  };
+  if (msgInput) {
+    msgInput.addEventListener('input', updateCount);
+    updateCount();
+  }
+
   const setError = (id, msg) => {
     const field = $(`[data-field="${id}"]`);
     if (!field) return;

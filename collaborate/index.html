@@ -56,13 +56,14 @@
       <div class="container collab-grid">
         <div class="reveal">
           <h2 class="h3">Six good ways in</h2>
-          <ul class="collab-list roomy">
-            <li><span class="n" style="--c:#4F46E5">✳</span><span><strong>Join as a member</strong> — pick your hub(s) and show up. Beginners get the warmest welcome.</span></li>
-            <li><span class="n" style="--c:#4F46E5">1</span><span><strong>Partner with Yuvora</strong> — schools and clubs growing the community with us.</span></li>
-            <li><span class="n" style="--c:#14B8A6">2</span><span><strong>Co-host an event</strong> — competitions, meetups, game nights, match days.</span></li>
-            <li><span class="n" style="--c:#8A55EF">3</span><span><strong>Run a workshop</strong> — teach what you know; learn the rest together.</span></li>
-            <li><span class="n" style="--c:#F59E0B">4</span><span><strong>Propose a new hub</strong> — bring your interest and a few friends.</span></li>
-            <li><span class="n" style="--c:#0F766E">5</span><span><strong>Volunteer or sponsor</strong> — time, skills, venues or funding for real activity.</span></li>
+          <p style="color:var(--ink-soft);font-size:.95rem;margin-top:.4rem">Pick one — it fills in the form for you.</p>
+          <ul class="ways">
+            <li><button type="button" class="way" data-way="Join as a member" aria-pressed="false" style="--c:#4F46E5"><span class="way-num" aria-hidden="true">01</span><span class="way-text"><strong>Join as a member</strong>Pick your hub(s) and show up. Beginners get the warmest welcome.</span><span class="way-pick" aria-hidden="true">Use this <span>→</span></span></button></li>
+            <li><button type="button" class="way" data-way="Partner with Yuvora" aria-pressed="false" style="--c:#4F46E5"><span class="way-num" aria-hidden="true">02</span><span class="way-text"><strong>Partner with Yuvora</strong>Schools and clubs growing the community with us.</span><span class="way-pick" aria-hidden="true">Use this <span>→</span></span></button></li>
+            <li><button type="button" class="way" data-way="Co-host an event" aria-pressed="false" style="--c:#14B8A6"><span class="way-num" aria-hidden="true">03</span><span class="way-text"><strong>Co-host an event</strong>Competitions, meetups, game nights, match days.</span><span class="way-pick" aria-hidden="true">Use this <span>→</span></span></button></li>
+            <li><button type="button" class="way" data-way="Organise a workshop / competition" aria-pressed="false" style="--c:#8A55EF"><span class="way-num" aria-hidden="true">04</span><span class="way-text"><strong>Run a workshop</strong>Teach what you know; learn the rest together.</span><span class="way-pick" aria-hidden="true">Use this <span>→</span></span></button></li>
+            <li><button type="button" class="way" data-way="Propose a new hub" aria-pressed="false" style="--c:#F59E0B"><span class="way-num" aria-hidden="true">05</span><span class="way-text"><strong>Propose a new hub</strong>Bring your interest and a few friends.</span><span class="way-pick" aria-hidden="true">Use this <span>→</span></span></button></li>
+            <li><button type="button" class="way" data-way="Volunteer" aria-pressed="false" style="--c:#0F766E"><span class="way-num" aria-hidden="true">06</span><span class="way-text"><strong>Volunteer or sponsor</strong>Time, skills, venues or funding for real activity.</span><span class="way-pick" aria-hidden="true">Use this <span>→</span></span></button></li>
           </ul>
           <div class="steps-mini">
             <h3>What happens after you send this?</h3>
@@ -106,12 +107,13 @@
                 </div>
                 <div class="field full" data-field="message">
                   <label for="fieldMessage">Your proposal *</label>
-                  <textarea id="fieldMessage" name="message" placeholder="Who are you, what are you thinking, and what would make it awesome? (20+ characters)" required></textarea>
+                  <textarea id="fieldMessage" name="message" placeholder="Who are you, what are you thinking, and what would make it awesome?" required></textarea>
+                  <div class="field-hint"><span class="char-count" id="msgCount" aria-hidden="true">0 / 20 minimum</span></div>
                   <span class="error-msg" role="alert"></span>
                 </div>
               </div>
               <input class="visually-hidden" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-              <button class="btn btn-primary form-submit" type="submit">Send proposal <span class="arrow">→</span></button>
+              <button class="btn btn-signal form-submit" type="submit">Send proposal <span class="arrow">→</span></button>
             </form>
           </div>
         </div>

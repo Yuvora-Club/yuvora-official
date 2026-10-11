@@ -619,7 +619,62 @@
   align-items: start;
 }
 @media (max-width: 900px) { .collab-grid { grid-template-columns: 1fr; } }
-.collab-list.roomy > li { padding: 1.15rem 0.25rem; }
+/* ---------- Ways in: clickable rows that drive the form ---------- */
+.ways { list-style: none; padding: 0; margin: 1.2rem 0 0; border-top: 1px solid var(--line-strong); }
+.ways > li { border-bottom: 1px solid var(--line); }
+.way {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.1rem;
+  align-items: center;
+  width: 100%;
+  padding: 1.05rem 0.6rem;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.way::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--white);
+  background: color-mix(in srgb, var(--c, var(--indigo)) 9%, white);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.way:hover::before, .way:focus-visible::before, .way.active::before { opacity: 1; }
+.way.active { box-shadow: inset 4px 0 0 var(--c, var(--indigo)); }
+.way > * { position: relative; }
+.way-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  color: var(--c, var(--indigo));
+  min-width: 2.2rem;
+}
+.way-text { font-size: 0.94rem; color: var(--ink-soft); }
+.way-text strong { display: block; font-size: 1.04rem; color: var(--ink); margin-bottom: 0.1rem; }
+.way-pick {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--c, var(--indigo));
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.way:hover .way-pick, .way:focus-visible .way-pick, .way.active .way-pick { opacity: 1; transform: none; }
+.way-pick span { display: inline-block; transition: transform 0.2s ease; }
+.way:hover .way-pick span { transform: translateX(3px); }
+@media (max-width: 560px) {
+  .way { grid-template-columns: auto 1fr; }
+  .way-pick { display: none; }
+}
 .steps-mini { margin-top: 2.2rem; padding-top: 1.6rem; border-top: 1px solid var(--line-strong); }
 .steps-mini h3 { font-size: 1.15rem; }
 .steps-mini ol { list-style: none; counter-reset: step; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.7rem; }
@@ -650,8 +705,8 @@
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
 .field { display: flex; flex-direction: column; gap: 0.35rem; }
 .field.full { grid-column: 1 / -1; }
-.field label { font-weight: 700; font-size: 0.9rem; }
-.field label .optional { font-weight: 500; color: var(--muted); font-size: 0.82rem; }
+.field label { font-weight: 700; font-size: 0.8rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-soft); }
+.field label .optional { font-weight: 500; color: var(--muted); font-size: 0.78rem; letter-spacing: 0; text-transform: none; }
 .field input, .field select, .field textarea {
   font: inherit; font-size: 1rem;
   padding: 0.75rem 1rem;
@@ -667,7 +722,23 @@
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: none; border-color: var(--indigo); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15); background: var(--white);
 }
-.field select { cursor: pointer; }
+.field select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%230F172A' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.75rem;
+}
+.field-hint { display: flex; justify-content: flex-end; }
+.char-count { font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+.char-count.ok { color: var(--teal-deep); }
+.form-card.flash { animation: card-flash 1.1s ease; }
+@keyframes card-flash {
+  0%, 100% { box-shadow: var(--shadow-soft); }
+  35% { box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.35), var(--shadow-soft); }
+}
 .field .error-msg { font-size: 0.85rem; font-weight: 600; color: #B3261E; display: none; }
 .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: #B3261E; }
 .field.invalid .error-msg { display: block; }
