@@ -611,6 +611,40 @@
 }
 
 /* ---------- Forms ---------- */
+/* ---------- Collaborate page rhythm ---------- */
+.collab-grid {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
+}
+@media (max-width: 900px) { .collab-grid { grid-template-columns: 1fr; } }
+.collab-list.roomy > li { padding: 1.15rem 0.25rem; }
+.steps-mini { margin-top: 2.2rem; padding-top: 1.6rem; border-top: 1px solid var(--line-strong); }
+.steps-mini h3 { font-size: 1.15rem; }
+.steps-mini ol { list-style: none; counter-reset: step; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.7rem; }
+.steps-mini li {
+  counter-increment: step;
+  display: flex;
+  gap: 0.9rem;
+  align-items: baseline;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+}
+.steps-mini li::before {
+  content: "0" counter(step);
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--coral-deep);
+}
+.form-title { margin: 0.9rem 0 0.35rem; font-size: clamp(1.4rem, 1.25rem + 1vw, 1.8rem); }
+.form-sub { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 1.4rem; max-width: 44ch; }
+.form-card .demo-notice { margin-bottom: 1.6rem; }
+.form-grid { row-gap: 1.7rem; }
+.form-submit { margin-top: 1.6rem; width: 100%; }
+
 .form-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-soft); padding: clamp(1.6rem, 3.5vw, 2.6rem); scroll-margin-top: 6rem; }
 #join { scroll-margin-top: 6rem; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
